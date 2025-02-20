@@ -1,74 +1,69 @@
 @extends('layouts.app')
 
-
 @section('content')
     @if(checkPermission([ 'Admin' ]))
-    <div style="margin: 50px"  class="">
+    <div style="margin: 50px">
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
                 <p>{{ $message }}</p>
             </div>
         @endif
-{{--            <div class="row" style="margin-bottom: 10px">--}}
-{{--                <div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--                    <div class="pull-right">--}}
-{{--                        <a target="_blank" class="btn btn-dark" href="{{ route('faculty.create') }}">Add a new faculty</a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+
         <table class="table table-bordered form-duration-div">
             <tr>
-
                 @if(checkPermission(['Admin']))
                     <th>No</th>
                     <th>Faculty</th>
                     <th>Status</th>
-                    <th >Action</th>
+                    <th>Action</th>
                 @endif
-
             </tr>
             @php
                 $a = 0
             @endphp
             @foreach ($faculties as $faculty)
                 <tr>
-
                     @if(checkPermission(['Admin']))
                         <td>{{ ++$a }}</td>
                         <td>{{ $faculty->faculty }}</td>
 
-
-
-                        <form action="{{ route('faculty.update',$faculty->id) }}" method="POST">
+                        <form id="update-form-{{ $faculty->id }}" action="{{ route('faculty.update', $faculty->id) }}" method="POST">
                             @csrf
                             @method('PUT')
-
                             <td>
-
-                                <select required name="status" class="custom-select" id="inputGroupSelect01" >
+                                <select required name="status" class="custom-select">
                                     <option selected>{{ $faculty->status }}</option>
                                     <option value="Open">Open</option>
                                     <option value="Closed">Closed</option>
-
                                 </select>
                             </td>
-
-
                             <td>
-                                <button type="submit" class="btn btn-danger">Update</button>
+                                <button type="button" class="btn btn-danger" onclick="confirmUpdate({{ $faculty->id }})">Update</button>
                             </td>
                         </form>
                     @endif
-
-
-
                 </tr>
             @endforeach
         </table>
-
     </div>
+    @endif
 
-
-
-@endif
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmUpdate(facultyId) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You are about to update the status!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, update it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('update-form-' + facultyId).submit();
+                }
+            });
+        }
+    </script>
 @endsection

@@ -7,6 +7,36 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .navbar-nav .nav-link {
+            position: relative;
+            color: #ffffff;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+    
+        /* Underline Effect */
+        .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background-color: #f8d7da; /* Light red underline */
+            transition: all 0.3s ease-in-out;
+        }
+    
+        /* Hover Effect */
+        .navbar-nav .nav-link:hover {
+            color: #f8d7da; /* Light red text */
+        }
+    
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+    </style>
 
 {{--    <title>{{ config('app.name', 'Laravel') }}</title>--}}
     <title>Convocation Student Registration</title>
@@ -31,88 +61,50 @@
 
 <body style="background-color: rgba(128,15,15,0.11)">
     <div id="app">
-        <nav style="background-color: #800f0f" class="navbar navbar-expand-md navbar-dark shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #800f0f;">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">SUSL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
                 @guest
-                    <a class="navbar-brand">
-                        {{--                    {{ config('app.name', 'Laravel') }}--}}
-                        SUSL
-                    </a>
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('login') }}">Login</a>
+                        </li>
+                    @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endif
                 @else
-                    <a href="{{ url('/verifyEmail') }}" class="navbar-brand">
-                        {{--                    {{ config('app.name', 'Laravel') }}--}}
-                        SUSL
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#">Hello, {{ Auth::user()->name }}</a>
+                    </li>
+                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana']))
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="{{ route('eligibleStudents.index') }}">Dashboard</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="#" id="logout-link">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 @endguest
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-
-
-
-                        @else
-
-{{--                            @if (1>0)--}}
-{{--                                <a class="dropdown-item" href="#" aria-expanded="false" v-pre>--}}
-{{--                                    Load Bursary--}}
-{{--                                </a>--}}
-{{--                            @endif--}}
-
-{{--                            <li class="nav-item dropdown">--}}
-                                <a style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                            @if(checkPermission(['mainStoreClark','viceChancellor','Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
-
-                                <a href="{{ route('eligibleStudents.index') }}" style="color: #a8a8a8" class="dropdown-item" href="#" aria-expanded="false" v-pre>
-                                    Dashboard
-                                </a>
-                            @endif
-
-{{--                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
-                                    <a style="color: #a8a8a8" class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-
-{{--                                </div>--}}
-{{--                            </li>--}}
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
 
         <main >
 {{--            <div class="welcomebgimage">--}}
@@ -121,5 +113,25 @@
 
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('logout-link').addEventListener('click', function (event) {
+        event.preventDefault();
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You will be logged out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, logout!",
+            cancelButtonText: "No, cancel"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logout-form').submit();
+            }
+        });
+    });
+</script>
 </body>
 </html>

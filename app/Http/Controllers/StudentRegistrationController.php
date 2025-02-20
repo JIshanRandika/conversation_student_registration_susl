@@ -43,6 +43,8 @@ class StudentRegistrationController extends Controller
         $faculties = Faculty::all();
         $convocations = Convocation::all();
         $eligibleStudents = EligibleStudent::all();
+        // $studentRegistration = new StudentRegistration(); 
+
         return view('studentRegistration.create',compact('eligibleStudents','faculties','convocations'));
     }
 
@@ -56,6 +58,9 @@ class StudentRegistrationController extends Controller
         $prices = Price::all();
         $studentRegistrations = StudentRegistration::all();
         $eligibleStudents = EligibleStudent::all();
+        // if ($eligibleStudents->isEmpty()) {
+        //     return view('noEligibleStudents'); // Redirects to another page
+        // }
         return view('eligibleStd',compact('eligibleStudents','studentRegistrations','prices'));
 
     }
@@ -70,6 +75,8 @@ class StudentRegistrationController extends Controller
 
         $validator = Validator::make($request->all(), [
             'regNum' => ['required', 'string', 'max:255','unique:student_registrations'],
+            'image' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:2048'],  // Validate image or PDF, max size 2MB
+
         ]);
 
         if ($validator->fails()) {
@@ -109,12 +116,11 @@ class StudentRegistrationController extends Controller
         $pro->signedDate = $request->signedDate;
 
 
-        if($request->image){
-            $file= $request->image;
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('/images'), $filename);
-            $pro->image=$filename;
-
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $filename);
+            $pro->image = $filename;
         }
 
         session_start();
@@ -213,11 +219,11 @@ class StudentRegistrationController extends Controller
     public function update(Request $request, StudentRegistration $studentRegistration)
     {
 
-        if($request->image){
+        if($request->hasFile('image')){
 
-            $file= $request->image;
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('/images'), $filename);
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('/images'), $filename);
             session_start();
             $convocationName = $_SESSION["convocationName"];
 

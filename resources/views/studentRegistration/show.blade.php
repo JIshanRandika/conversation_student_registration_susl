@@ -168,9 +168,93 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Payment Receipt:</strong>
-                <img width="50%" src="{{ asset('/images/'.$studentRegistration->image) }}">
+                {{-- <input required type="file" name="image" class="form-control" placeholder="image or PDF" id="image" accept="image/*,application/pdf" onchange="previewFile()"> --}}
+        
+                <!-- Image Preview Section -->
+                <div id="imagePreview" style="display: none;">
+                    {{-- <label>Image Preview:</label> --}}
+                    <img id="imgPreview" src="" alt="Image Preview" style="max-width: 50%; max-height: 200px;" />
+                </div>
+        
+                <!-- PDF Preview Section -->
+                <div id="pdfPreview" style="display: none;">
+                    {{-- <label>PDF Preview:</label> --}}
+                    <embed id="pdfEmbed" src="" type="application/pdf" width="50%" height="400px" />
+                </div>
+        
+                <!-- Display existing image or PDF if available -->
+                {{-- @if($studentRegistration->image)
+                    <div id="existingPreview">
+                        @if(strpos($studentRegistration->image, '.pdf') !== false)
+                            <label>Existing PDF:</label>
+                            <embed src="{{ asset('/images/'.$studentRegistration->image) }}" type="application/pdf" width="100%" height="400px" />
+                        @else
+                            <strong>Existing Image:</strong>
+                            <img width="50%" src="{{ asset('/images/'.$studentRegistration->image) }}" alt="Existing Image" />
+                        @endif
+                    </div>
+                @endif --}}
             </div>
         </div>
+        
+        <script>
+            function previewFile() {
+                var file = document.querySelector('#image').files[0];
+                var previewImage = document.querySelector('#imagePreview');
+                var previewPDF = document.querySelector('#pdfPreview');
+                var imgPreview = document.querySelector('#imgPreview');
+                var pdfEmbed = document.querySelector('#pdfEmbed');
+                
+                var reader = new FileReader();
+                
+                if (file) {
+                    var fileType = file.type;
+                    
+                    if (fileType.startsWith('image')) {
+                        // For image files
+                        previewImage.style.display = 'block';
+                        previewPDF.style.display = 'none';
+                        reader.onloadend = function() {
+                            imgPreview.src = reader.result;
+                        };
+                        reader.readAsDataURL(file);
+                    } else if (fileType === 'application/pdf') {
+                        // For PDF files
+                        previewImage.style.display = 'none';
+                        previewPDF.style.display = 'block';
+                        reader.onloadend = function() {
+                            pdfEmbed.src = reader.result;
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        previewImage.style.display = 'none';
+                        previewPDF.style.display = 'none';
+                    }
+                }
+            }
+        
+            // If there's an existing file (image or PDF), show it by default on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                var existingImage = "{{ $studentRegistration->image }}";
+                if (existingImage) {
+                    var previewImage = document.querySelector('#imagePreview');
+                    var previewPDF = document.querySelector('#pdfPreview');
+                    var imgPreview = document.querySelector('#imgPreview');
+                    var pdfEmbed = document.querySelector('#pdfEmbed');
+        
+                    if (existingImage.includes('.pdf')) {
+                        previewImage.style.display = 'none';
+                        previewPDF.style.display = 'block';
+                        pdfEmbed.src = "{{ asset('/images/' . $studentRegistration->image) }}";
+                    } else {
+                        previewImage.style.display = 'block';
+                        previewPDF.style.display = 'none';
+                        imgPreview.src = "{{ asset('/images/' . $studentRegistration->image) }}";
+                    }
+                }
+            });
+        </script>
+        
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -184,7 +268,7 @@
 
         @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
 
-        <form action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
+        <form id="reviewForm" action="{{ route('studentRegistration.update',$studentRegistration->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -247,4 +331,30 @@
         </form>
         @endif
     </div>
+
+    <!-- Include SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('#reviewForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Do you want to mark this registration as reviewed?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, confirm it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.submit(); // Submit the form if confirmed
+                }
+            });
+        });
+    });
+</script>
+
 @endsection

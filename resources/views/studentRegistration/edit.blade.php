@@ -326,11 +326,95 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Payment Receipt: <span style="color: red">(Please upload an image less than 2MB. Don't upload PDF.)</span></strong>
-                        <input required value="{{ $studentRegistration->image }}" type="file" name="image" class="form-control" placeholder="image" id="image">
-                        <img width="50%" src="{{ asset('/images/'.$studentRegistration->image) }}">
+                        <strong>Payment Receipt: <span style="color: red">(Please upload an image or PDF file. Maximum size: 2MB.)</span></strong>
+                        <input required type="file" name="image" class="form-control" placeholder="image or PDF" id="image" accept="image/*,application/pdf" onchange="previewFile()">
+                        
+                        <!-- Image Preview Section -->
+                        <div id="imagePreview" style="display: none;">
+                            {{-- <label>Image Preview:</label> --}}
+                            <img id="imgPreview" src="" alt="Image Preview" style="max-width: 50%; max-height: 200px;" />
+                        </div>
+                
+                        <!-- PDF Preview Section -->
+                        <div id="pdfPreview" style="display: none;">
+                            {{-- <label>PDF Preview:</label> --}}
+                            <embed id="pdfEmbed" src="" type="application/pdf" width="50%" height="400px" />
+                        </div>
+                
+                        <!-- Display uploaded image if available -->
+                        {{-- @if($studentRegistration->image)
+                            <div id="existingPreview">
+                                @if(strpos($studentRegistration->image, '.pdf') !== false)
+                                    <label>Existing PDF:</label>
+                                    <embed src="{{ asset('/images/'.$studentRegistration->image) }}" type="application/pdf" width="100%" height="400px" />
+                                @else
+                                    <img width="50%" src="{{ asset('/images/'.$studentRegistration->image) }}" alt="Existing Image" />
+                                @endif
+                            </div>
+                        @endif --}}
                     </div>
                 </div>
+                
+                <script>
+                    function previewFile() {
+                        var file = document.querySelector('#image').files[0];
+                        var previewImage = document.querySelector('#imagePreview');
+                        var previewPDF = document.querySelector('#pdfPreview');
+                        var imgPreview = document.querySelector('#imgPreview');
+                        var pdfEmbed = document.querySelector('#pdfEmbed');
+                        
+                        var reader = new FileReader();
+                        
+                        if (file) {
+                            var fileType = file.type;
+                            
+                            if (fileType.startsWith('image')) {
+                                // For image files
+                                previewImage.style.display = 'block';
+                                previewPDF.style.display = 'none';
+                                reader.onloadend = function() {
+                                    imgPreview.src = reader.result;
+                                };
+                                reader.readAsDataURL(file);
+                            } else if (fileType === 'application/pdf') {
+                                // For PDF files
+                                previewImage.style.display = 'none';
+                                previewPDF.style.display = 'block';
+                                reader.onloadend = function() {
+                                    pdfEmbed.src = reader.result;
+                                };
+                                reader.readAsDataURL(file);
+                            } else {
+                                previewImage.style.display = 'none';
+                                previewPDF.style.display = 'none';
+                            }
+                        }
+                    }
+                
+                    // If there's an existing file (image or PDF), show it by default on page load
+                    document.addEventListener('DOMContentLoaded', function() {
+                        var existingImage = "{{ $studentRegistration->image }}";
+                        if (existingImage) {
+                            var previewImage = document.querySelector('#imagePreview');
+                            var previewPDF = document.querySelector('#pdfPreview');
+                            var imgPreview = document.querySelector('#imgPreview');
+                            var pdfEmbed = document.querySelector('#pdfEmbed');
+                
+                            if (existingImage.includes('.pdf')) {
+                                previewImage.style.display = 'none';
+                                previewPDF.style.display = 'block';
+                                pdfEmbed.src = "{{ asset('/images/' . $studentRegistration->image) }}";
+                            } else {
+                                previewImage.style.display = 'block';
+                                previewPDF.style.display = 'none';
+                                imgPreview.src = "{{ asset('/images/' . $studentRegistration->image) }}";
+                            }
+                        }
+                    });
+                </script>
+                
+                
+                
 
 {{--                <div id="pspdfkit" style="height: 50vh"></div>--}}
 

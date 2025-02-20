@@ -25,7 +25,7 @@
         @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
 
                 <div class="pull-left">
-                    <h2>Eligible Students</h2>
+                    <h2 >Eligible Students</h2>
                 </div>
 
             @if ($message = Session::get('success'))
@@ -33,54 +33,38 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <div class="row mb-3">
-            @if(checkPermission([ 'Admin' ]))
-                    <div class="col" style="margin-bottom: 10px">
-                        <div class="pull-center">
-                            <a class="btn btn-dark" href="{{ route('survey.index') }}">Survey</a>
-                        </div>
+            <div class="row mb-3 d-flex justify-content-between">
+                @if(checkPermission([ 'Admin' ]))
+                    <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                        <a class="btn btn-dark w-100" href="{{ route('survey.index') }}">Survey</a>
                     </div>
-                    <div class="col" style="margin-bottom: 10px">
-                        <div class="pull-center">
-                            <a class="btn btn-dark" href="{{ route('price.index') }}">Convocation Fee</a>
-                        </div>
+                    <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                        <a class="btn btn-dark w-100" href="{{ route('price.index') }}">Convocation Fee</a>
                     </div>
-                    <div class="col" style="margin-bottom: 10px">
-                            <div class="pull-center">
-                                <a class="btn btn-dark" href="{{ route('user.index') }}">Users</a>
-                            </div>
+                    <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                        <a class="btn btn-dark w-100" href="{{ route('user.index') }}">Users</a>
                     </div>
-                    <div class="col" style="margin-bottom: 10px">
-                            <div class="pull-center">
-                                <a class="btn btn-dark" href="{{ route('convocation.index') }}">Convocation</a>
-                            </div>
+                    <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                        <a class="btn btn-dark w-100" href="{{ route('convocation.index') }}">Convocation</a>
                     </div>
-                    <div class="col" style="margin-bottom: 10px">
-                            <div class="pull-center">
-                                <a class="btn btn-dark" href="{{ route('faculty.index') }}">Faculty</a>
-                            </div>
+                    <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                        <a class="btn btn-dark w-100" href="{{ route('faculty.index') }}">Faculty</a>
                     </div>
-
-
-
-            @endif
-            <div class="col" style="margin-bottom: 10px">
-                    <div class="pull-center">
-                        <a class="btn btn-danger" href="{{ route('report.index') }}">Reports</a>
-                    </div>
-            </div>
-        <div class="col" style="margin-bottom: 10px">
-                <div class="pull-center">
-                    <a class="btn btn-success" href="{{ route('eligibleStudents.create') }}">Add a new student</a>
+                @endif
+            
+                <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                    <a class="btn btn-danger w-100" href="{{ route('report.index') }}">Reports</a>
                 </div>
-        </div>
-
-            <div class="col" style="margin-bottom: 10px">
-                    <div class="pull-right">
-                        <a class="btn btn-success" href="{{ route('importstudents') }}">Import Data</a>
-                    </div>
+            
+                <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                    <a class="btn btn-success w-100" href="{{ route('eligibleStudents.create') }}">Add a new student</a>
+                </div>
+            
+                <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                    <a class="btn btn-success w-100" href="{{ route('importstudents') }}">Import Data</a>
+                </div>
             </div>
-            </div>
+            
 {{--======================--}}
             <div class="row">
                 @if(checkPermission(['Admin']))
@@ -97,7 +81,7 @@
                             </div>
                             </div>
                             <div class="col-xs-2 col-sm-2 col-md-2" style="display: inline-flex;justify-content: center">
-                            <button type="submit" class="btn btn-success btn-user float-right mb-3">Export All Registered Students</button>
+                            <button type="submit" class="btn btn-success btn-user float-right mb-3 w-100">Export All Registered Students</button>
                             </div>
                             </div>
                             {{--                    <a class="btn btn-primary float-right mr-3 mb-3" href="{{ route('users.index') }}">Cancel</a>--}}
@@ -127,7 +111,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-2 col-sm-2 col-md-2" style="display: inline-flex;justify-content: center">
-                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export Survey</button>
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3 w-100">Export Survey</button>
                                     </div>
                                 </div>
                                 {{--                    <a class="btn btn-primary float-right mr-3 mb-3" href="{{ route('users.index') }}">Cancel</a>--}}
@@ -170,7 +154,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-2 col-sm-2 col-md-2" style="display: inline-flex;justify-content: center">
-                                <button type="submit" class="btn btn-success btn-user float-right mb-3">Export Registered Students by Faculty</button>
+                                <button type="submit" class="btn btn-success btn-user float-right mb-3 w-100">Export Registered Students by Faculty</button>
                             </div>
                         </div>
 
@@ -378,75 +362,61 @@
 {{--            </script>--}}
 
 
-            @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
-{{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
+ @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+    <div class=" mt-4 w-100 pb-4">
+        <div class="card shadow p-4" style="background-color: #E9DDDD;">
+            <h4 class="text-center mb-4">Search Eligible Students</h4>
 
-                <form action="{{ route('getESByFormRequest') }}" id="selectform" method="GET">
-                    @csrf
-                    <div style="margin: 20px" class="row">
-
-                        <div class="form-group">
-                            {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
-                        </div>
-
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group" style="margin-top: 20px">
-                                <div>
-                                    <select required name="studentRegEligible" class="form-control" id="frm_duration">
-                                        {{--                            <option selected>Choose</option>--}}
-                                        <option selected value="All">All Eligible Students</option>
-                                        <option value="Registered">Registered Students</option>
-                                        <option value="Pending">Registered Students Pending</option>
-                                        <option value="Reject">Registered Students Rejected</option>
-                                        <option value="Accept">Registered Students Accepted</option>
-                                        <option value="NotRegistered">Not Registered Students</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group" style="margin-top: 20px">
-                                <div>
-                                    <select required name="faculty" class="form-control" id="frm_duration">
-                                        {{--                            <option selected>Choose</option>--}}
-                                        <option value="All Faculty">All Faculty</option>
-                                        <option value="Computing">Computing</option>
-                                        <option value="Agricultural Sciences">Agricultural Sciences</option>
-                                        <option value="Applied Sciences">Applied Sciences</option>
-                                        <option value="Geomatics">Geomatics</option>
-                                        <option value="Management Studies">Management Studies</option>
-                                        <option value="Medicine">Medicine</option>
-                                        <option value="Social Sciences & Languages">Social Sciences & Languages</option>
-                                        <option value="Technology">Technology</option>
-                                        <option value="Sport">Sport</option>
-                                        <option value="Graduate Studies">Graduate Studies</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Search</button>
-                        </div>
-
-
-
-
+            <form action="{{ route('getESByFormRequest') }}" id="selectform" method="GET">
+                @csrf
+                <div class="row g-3">
+                    
+                    <div class="col-12">
+                        <label for="convocationName" class="form-label">Convocation Name</label>
+                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-select']) }}
                     </div>
 
-                </form>
-                <div style="margin-bottom:50px;margin-top: -30px" class="row">
-                    <div class="col-xs-11 col-sm-11 col-md-11 text-center">
+                    <div class="col-md-6">
+                        <label for="studentRegEligible" class="form-label">Registration Status</label>
+                        <select required name="studentRegEligible" class="form-select">
+                            <option selected value="All">All Eligible Students</option>
+                            <option value="Registered">Registered Students</option>
+                            <option value="Pending">Registered Students Pending</option>
+                            <option value="Reject">Registered Students Rejected</option>
+                            <option value="Accept">Registered Students Accepted</option>
+                            <option value="NotRegistered">Not Registered Students</option>
+                        </select>
                     </div>
-                    <div  class="col-xs-1 col-sm-1 col-md-1">
-                        <button class="btn btn-dark" onclick="document.getElementById('selectform').reset(); document.getElementById('from').value = null; return false;">
+
+                    <div class="col-md-6">
+                        <label for="faculty" class="form-label">Faculty</label>
+                        <select required name="faculty" class="form-select">
+                            <option value="All Faculty">All Faculty</option>
+                            <option value="Computing">Computing</option>
+                            <option value="Agricultural Sciences">Agricultural Sciences</option>
+                            <option value="Applied Sciences">Applied Sciences</option>
+                            <option value="Geomatics">Geomatics</option>
+                            <option value="Management Studies">Management Studies</option>
+                            <option value="Medicine">Medicine</option>
+                            <option value="Social Sciences & Languages">Social Sciences & Languages</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Graduate Studies">Graduate Studies</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-center gap-3 mt-3">
+                        <button type="submit" class="btn btn-primary px-4">Search</button>
+                        <button type="button" class="btn btn-outline-secondary px-4" 
+                            onclick="document.getElementById('selectform').reset();">
                             Reset
                         </button>
                     </div>
+
                 </div>
+            </form>
+        </div>
+    </div>
 
 
 
@@ -459,247 +429,82 @@
 
 
 
-{{--            =================all eligible students=============--}}
-            <div style="overflow-x:auto;">
-        <table id="divFrmAll" class="table table-bordered form-duration-div">
-            <tr>
+            <div class="table-responsive">
+                <table id="divFrmAll" class="table table-striped table-hover table-bordered align-middle">
+                    <thead class="table-dark sticky-top">
+                        <tr>
                             <th>No</th>
-                @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
-
-                <th>Registration status</th>
-
-                @endif
-                <th>Name</th>
-                <th style="width: auto">Register Number</th>
-                <th>Index Number</th>
-                @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
-                <th>Faculty</th>
-                <th>Department</th>
-                <th>Degree Name</th>
-                <th >Action</th>
-                @endif
-                @if(checkPermission(['mainStoreClark','Admin']))
-                    <th>Cloak Issue</th>
-                    <th>Cloak Return</th>
-                    <th>Garland Return</th>
-                 @endif
-            </tr>
-            @php
-                $a = 0
-            @endphp
-            @foreach ($students as $allEligibleStudent)
-                <tr>
-
-                    @if(checkPermission(['Admin','viceChancellor','surveyAccess']))
-                        <td>{{ ++$a }}</td>
-                        @include('component.allEligibleStudentsTableComponent')
-                    @endif
-                    @if(checkPermission(['EBSC_Applied']))
-                        @if($allEligibleStudent->faculty == 'Applied Sciences')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_Geo']))
-                        @if($allEligibleStudent->faculty == 'Geomatics')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_Social']))
-                        @if($allEligibleStudent->faculty == 'Social Sciences & Languages')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_Mana']))
-                        @if($allEligibleStudent->faculty == 'Management Studies')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_Med']))
-                        @if($allEligibleStudent->faculty == 'Medicine')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_Agri']))
-                        @if($allEligibleStudent->faculty == 'Agricultural Sciences')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_Tech']))
-                        @if($allEligibleStudent->faculty == 'Technology')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                    @if(checkPermission(['EBSC_GS']))
-                        @if($allEligibleStudent->faculty == 'Graduate Studies')
-                            <td>{{ ++$a }}</td>
-                            @include('component.allEligibleStudentsTableComponent')
-                        @endif
-                    @endif
-                        @if(checkPermission(['EBSC_Computing']))
-                            @if($allEligibleStudent->faculty == 'Computing')
-                                <td>{{ ++$a }}</td>
-                                @include('component.allEligibleStudentsTableComponent')
+                            @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+                            <th>Registration Status</th>
                             @endif
-                        @endif
-
-{{--                    @if(checkPermission(['examinationBranch','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))--}}
-
-{{--                        --}}
-
-{{--                    @endif--}}
-                        @if(checkPermission(['Admin']))
-                            <td>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" value="Not Yet" name="cloakIssueDate">
-                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
-
-
-                                        <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
-                                        <button type="submit" class="btn btn-success">Update</button>
-                                    </form>
-                                </div>
-
-                            </td>
-
-
-                            <td>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" value="Not Yet" name="cloakReturnDate">
-                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
-
-
-                                        <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
-                                        <button type="submit" class="btn btn-info">Update</button>
-                                    </form>
-                                </div>
-
-                            </td>
-
-                            <td>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" value="Not Yet" name="garlandReturnDate">
-                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
-
-
-                                        <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
-                                        <button type="submit" class="btn btn-danger">Update</button>
-                                    </form>
-                                </div>
-
-                            </td>
-                        @endif
-                    @if(checkPermission(['mainStoreClark']))
+                            <th>Name</th>
+                            <th>Register Number</th>
+                            <th>Index Number</th>
+                            @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+                            <th>Faculty</th>
+                            <th>Department</th>
+                            <th>Degree Name</th>
+                            <th>Action</th>
+                            @endif
+                            @if(checkPermission(['mainStoreClark','Admin']))
+                            <th>Cloak Issue</th>
+                            <th>Cloak Return</th>
+                            <th>Garland Return</th>
+                            @endif
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php $a = 0 @endphp
+                        @foreach ($students as $allEligibleStudent)
+                        <tr>
+                            @if(checkPermission(['Admin','viceChancellor','surveyAccess']))
                             <td>{{ ++$a }}</td>
-                            <td>{{ $allEligibleStudent->nameWithInitials }}</td>
-                            <td>{{ $allEligibleStudent->regNum }}</td>
-                            <td>{{ $allEligibleStudent->indexNum }}</td>
-
+                            @include('component.allEligibleStudentsTableComponent')
+                            @endif
+                            @foreach(['EBSC_Applied' => 'Applied Sciences', 'EBSC_Geo' => 'Geomatics', 'EBSC_Social' => 'Social Sciences & Languages', 'EBSC_Mana' => 'Management Studies', 'EBSC_Med' => 'Medicine', 'EBSC_Agri' => 'Agricultural Sciences', 'EBSC_Tech' => 'Technology', 'EBSC_GS' => 'Graduate Studies', 'EBSC_Computing' => 'Computing'] as $role => $faculty)
+                            @if(checkPermission([$role]) && $allEligibleStudent->faculty == $faculty)
+                            <td>{{ ++$a }}</td>
+                            @include('component.allEligibleStudentsTableComponent')
+                            @endif
+                            @endforeach
+                            @if(checkPermission(['Admin']))
                             <td>
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" value="Not Yet" name="cloakIssueDate">
-                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
-
-
-                                        <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
-                                        <button type="submit" class="btn btn-success">Update</button>
-                                    </form>
-                                </div>
-
+                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" value="Not Yet" name="cloakIssueDate">
+                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakIssueDate" @if($allEligibleStudent->cloakIssueDate!='Not Yet') checked @endif>
+                                    <div>{{ $allEligibleStudent->cloakIssueDate }}</div>
+                                    <button type="submit" class="btn btn-success btn-sm">Update</button>
+                                </form>
                             </td>
-
-
                             <td>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" value="Not Yet" name="cloakReturnDate">
-                                        <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
-
-
-                                        <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
-                                        <button type="submit" class="btn btn-info">Update</button>
-                                    </form>
-                                </div>
-
+                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="hidden" value="Not Yet" name="cloakReturnDate">
+                                    <input type="checkbox" value={{Carbon\Carbon::now()}} name="cloakReturnDate" @if($allEligibleStudent->cloakReturnDate!='Not Yet') checked @endif>
+                                    <div>{{ $allEligibleStudent->cloakReturnDate }}</div>
+                                    <button type="submit" class="btn btn-info btn-sm">Update</button>
+                                </form>
                             </td>
-
                             <td>
-
-                                <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
+                                <form action="{{ route('eligibleStudents.update',$allEligibleStudent->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
                                     <input type="hidden" value="Not Yet" name="garlandReturnDate">
                                     <input type="checkbox" value={{Carbon\Carbon::now()}} name="garlandReturnDate" @if($allEligibleStudent->garlandReturnDate!='Not Yet') checked @endif>
-
-
                                     <div>{{ $allEligibleStudent->garlandReturnDate }}</div>
-                                        <button type="submit" class="btn btn-danger">Update</button>
-                                    </form>
-                                </div>
-
+                                    <button type="submit" class="btn btn-danger btn-sm">Update</button>
+                                </form>
                             </td>
-
-
-{{--                            <td>{{ $eligibleStudent->garlandReturnDate }}</td>--}}
-
-
-                    @endif
-
-
-
-                </tr>
-            @endforeach
-        </table>
+                            @endif
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-
-{{--            ===========Registered Table==========--}}
-
-
-
-
-{{--            Registered Pending Students--}}
-
-
-
-{{--            Registered students Reject--}}
-
-
-
-{{--            Registered Accepted--}}
-
-
-
-            {{--            =========== Not Registered Table==========--}}
-
-
-
-
-    </div>
-
+            
 
 
 

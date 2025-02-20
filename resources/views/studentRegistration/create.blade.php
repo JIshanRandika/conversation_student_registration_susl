@@ -374,10 +374,70 @@
 
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
-                                                <strong>Payment Receipt: <span style="color: red">(Please upload an image less than 2MB. Don't upload PDF.)</span></strong>
-                                                <input required type="file" name="image" class="form-control" placeholder="image" id="image">
+                                                <strong>Payment Receipt: <span style="color: red">(Please upload an image or PDF file. Maximum size: 2MB.)</span></strong>
+                                                <input required type="file" name="image" class="form-control" placeholder="image" id="image" onchange="previewFile()">
+                                            </div>
+                                        
+                                            <!-- Image Preview Section -->
+                                            <div id="imagePreview" style="display: none;">
+                                                <img id="imgPreview" src="" alt="Image Preview" style="max-width: 50%; max-height: 200px;" />
+                                            </div>
+                                        
+                                            <!-- PDF Preview Section -->
+                                            <div id="pdfPreview" style="display: none;">
+                                                <embed id="pdfEmbed" src="" type="application/pdf" width="50%" height="400px" />
                                             </div>
                                         </div>
+                                        
+                                        <script>
+                                            function previewFile() {
+                                                var file = document.querySelector('#image').files[0];
+                                                var previewImage = document.querySelector('#imagePreview');
+                                                var previewPDF = document.querySelector('#pdfPreview');
+                                                var imgPreview = document.querySelector('#imgPreview');
+                                                var pdfEmbed = document.querySelector('#pdfEmbed');
+                                                
+                                                var reader = new FileReader();
+                                        
+                                                if (file) {
+                                                    var fileType = file.type;
+                                        
+                                                    if (fileType.startsWith('image')) {
+                                                        // For image files
+                                                        previewImage.style.display = 'block';
+                                                        previewPDF.style.display = 'none';
+                                                        reader.onloadend = function() {
+                                                            imgPreview.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    } else if (fileType === 'application/pdf') {
+                                                        // For PDF files
+                                                        previewImage.style.display = 'none';
+                                                        previewPDF.style.display = 'block';
+                                                        reader.onloadend = function() {
+                                                            pdfEmbed.src = reader.result;
+                                                        };
+                                                        reader.readAsDataURL(file);
+                                                    } else {
+                                                        previewImage.style.display = 'none';
+                                                        previewPDF.style.display = 'none';
+                                                    }
+                                                }
+                                            }
+                                        
+                                            // Hide both previews by default when the page is loaded
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                var previewImage = document.querySelector('#imagePreview');
+                                                var previewPDF = document.querySelector('#pdfPreview');
+                                                
+                                                // Hide both previews by default
+                                                previewImage.style.display = 'none';
+                                                previewPDF.style.display = 'none';
+                                            });
+                                        </script>
+                                        
+                                        
+                                        
                                         <div class="row">
                                             <div style="display: inline-flex; justify-content: center" class="col-xs-1 col-sm-1 col-md-1">
                                                 <input style="margin-top: 14px" required type="checkbox" name="vehicle" value="Bike">
@@ -499,5 +559,40 @@
         </div>
     </div>
 
-
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const fileType = file.type;
+        
+            // Clear any previous preview
+            document.getElementById('imagePreview').style.display = 'none';
+            document.getElementById('pdfPreview').style.display = 'none';
+            document.getElementById('imagePreviewImg').src = '';
+            document.getElementById('pdfPreviewEmbed').src = '';
+        
+            if (file) {
+                // Image file preview
+                if (fileType.startsWith('image')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('imagePreviewImg').src = e.target.result;
+                        document.getElementById('imagePreview').style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+                // PDF file preview
+                else if (fileType === 'application/pdf') {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('pdfPreviewEmbed').src = e.target.result;
+                        document.getElementById('pdfPreview').style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please upload a valid image or PDF file.');
+                }
+            }
+        });
+        </script>
+        
 @endsection
