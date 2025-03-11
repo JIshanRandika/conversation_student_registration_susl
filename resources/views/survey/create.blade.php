@@ -71,6 +71,8 @@
     <form action="{{ route('survey.store') }}" id="selectSurveyForm" method="POST">
 {{--    <form  id="selectform" method="POST">--}}
         @csrf
+        @foreach ($eligibleStudents as $eligibleStudent)
+            @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $eligibleStudent->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
         <div style="margin: 20px" class="row">
 {{--            <div class="col-xs-12 col-sm-12 col-md-12">--}}
 {{--                <div class="form-group">--}}
@@ -181,27 +183,16 @@
                     </select>
                 </div>
             </div>
-
+            
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>05. Faculty/Institution:</strong>
-                    <select required name="faculty" class="custom-select" id="inputGroupSelect04" >
-                        <option></option>
-                        <option value="Faculty of Computing">Faculty of Computing</option>
-                        <option value="Faculty of Agriculture Sciences">Faculty of Agriculture Sciences</option>
-                        <option value="Faculty of Applied Sciences">Faculty of Applied Sciences</option>
-                        <option value="Faculty of Geomatics">Faculty of Geomatics</option>
-                        <option value="Faculty of Sports">Faculty of Sports</option>
-                        <option value="Faculty of Management Studies">Faculty of Management Studies</option>
-                        <option value="Faculty of Medicine">Faculty of Medicine</option>
-                        <option value="Faculty of Social Sciences and Languages">Faculty of Social Sciences and Languages</option>
-                        <option value="Faculty of Technology">Faculty of Technology</option>
-                        <option value="Faculty of Graduate Studies">Faculty of Graduate Studies</option>
-                        <option value="Centre for Indigenous Knowledge and Community Studies (CIKCS)">Centre for Indigenous Knowledge and Community Studies (CIKCS)</option>
-                        <option value="Centre for Open and Distance learning(CODL)">Centre for Open and Distance learning(CODL)</option>
-                    </select>
+                    <input readonly value="{{ $eligibleStudent->faculty }}" required type="text" name="faculty" class="form-control" placeholder="Faculty/Institution">
                 </div>
             </div>
+            
+            
+
 
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
@@ -1164,7 +1155,8 @@
             </div>
 
 
-
+            @endif
+            @endforeach
 
         </div>
 
