@@ -7,23 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class HelloMail extends Mailable
+class RegistrationSend extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $regNum;
-
+    public $status;
 
     /**
      * Create a new message instance.
-     * 
      *
      * @return void
      */
-    public function __construct($regNum)
+    public function __construct($status)
     {
-        $this->regNum = $regNum;
-
+        //
+        $this->status = $status;
     }
 
     /**
@@ -33,6 +31,7 @@ class HelloMail extends Mailable
      */
     public function build()
     {
-        return $this->view('hello');
+        return $this->view('registrationSend');
     }
 }
+

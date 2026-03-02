@@ -1,10 +1,13 @@
 <?php
 
+use App\Mail\HelloMail;
 use App\Models\eligible_students;
 use App\Models\EligibleStudent;
 use App\Models\StudentRegistration;
 use App\Models\VCorRegComment;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+
 
 use App\Http\Controllers\MailController;
 
@@ -27,6 +30,12 @@ Route::get('/', function () {
     return view('auth.login');
 })->name('welcome');
 
+// Route::get('/hello', function () {
+//     $regNum = '21CIS0138'; 
+//     Mail::to('sajithsampath721@gmail.com')
+//         ->send(new HelloMail($regNum));
+//     return view('auth.login');
+// })->name('hello');
 
 //Route::get('/', function () {
 //    return view('survey.create');
@@ -91,6 +100,7 @@ Route::put('/statusConfirm',[App\Http\Controllers\EligibleStudentsController::cl
 
 
 Route::post('/statusConfirm',[App\Http\Controllers\StudentRegistrationController::class, 'registerdReset'])->name('statusConfirm');;
+// Route::get('/send-registration-mail/{email}', [MailController::class, 'SurveyController'])->name('RegistrationSendMail');
 
 
 

@@ -182,6 +182,7 @@
                             <option value="Technology">Technology</option>
                             <option value="Sport">Sport</option>
                             <option value="Graduate Studies">Graduate Studies</option>
+                            <option value="Indigenous Knowledge & Community Studies">Indigenous Knowledge & Community Studies</option>
 
                         </select>
                     </div>

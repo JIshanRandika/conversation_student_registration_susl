@@ -5,7 +5,7 @@
 
 
     <div class="">
-
+        
 
         @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -15,7 +15,7 @@
 
             @foreach (($eligibleStudents) as $eligibleStudent)
 
-                {{--                    @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum)))--}}
+                                   {{-- @if (strtoupper(trim($eligibleStudent->regNum)) === strtoupper(trim(Auth::user()->regNum))) --}}
                 @if (strtoupper(trim(str_replace(' ', '', str_replace('/', '', $eligibleStudent->regNum)))) === strtoupper(trim(str_replace(' ', '', str_replace('/', '', Auth::user()->regNum)))))
                     @php
                         $_SESSION["convocationName"]=$eligibleStudent->convocationName;
@@ -524,9 +524,9 @@
                                                 $key = $keys[0];
                                                 $faculty = $data[$key]['faculty'];
                                                 @endphp
-                                                @if($eligibleStudent->faculty=='Graduate Studies')
+                                                @if($eligibleStudent->faculty=='Graduate Studies' || $eligibleStudent->faculty=='Indigenous Knowledge & Community Studies')
                                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies")
+                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies" && $faculty!="Indigenous Knowledge & Community Studies")
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                 @else
                                                     <button type="submit" class="btn btn-primary">Next</button>

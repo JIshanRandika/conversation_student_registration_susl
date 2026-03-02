@@ -44,7 +44,7 @@
         @endif
     @endif
 
-    @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+    @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing','EBSC_CIKCS']))
         <a class="btn btn-primary" href="{{ route('eligibleStudents.edit',$allEligibleStudent->id) }}">Edit</a>
 
         <form id="delete-form-{{ $allEligibleStudent->id }}" action="{{ route('eligibleStudents.destroy',$allEligibleStudent->id) }}" method="POST" class="d-inline">

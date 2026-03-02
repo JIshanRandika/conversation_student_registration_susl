@@ -22,7 +22,7 @@ class MailController extends Controller
 
         $name = 'Ishan';
 
-        Mail:: to('jishanrandika@gmail.com')->send(new SignUp($name));
+        Mail:: to('sajithsampath721@gmail.com')->send(new SignUp($name));
 
 
 

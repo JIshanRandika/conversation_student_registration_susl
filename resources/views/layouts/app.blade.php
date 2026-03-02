@@ -63,7 +63,18 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background-color: #800f0f;">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">SUSL</a>
+        {{-- <a class="navbar-brand" href="{{ url('/') }}"><img src="images/susl_logo_transparent1.png" alt="logo" width="150px"></a> --}}
+        @guest
+                    <a class="navbar-brand">
+                        {{--                    {{ config('app.name', 'Laravel') }}--}}
+                        SUSL
+                    </a>
+                @else
+                    <a href="{{ url('/verifyEmail') }}" class="navbar-brand">
+                        {{--                    {{ config('app.name', 'Laravel') }}--}}
+                        SUSL
+                    </a>
+                @endguest
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -86,7 +97,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="#">Hello, {{ Auth::user()->name }}</a>
                     </li>
-                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana']))
+                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing','EBSC_CIKCS']))
                         <li class="nav-item">
                             <a class="nav-link text-light" href="{{ route('eligibleStudents.index') }}">Dashboard</a>
                         </li>

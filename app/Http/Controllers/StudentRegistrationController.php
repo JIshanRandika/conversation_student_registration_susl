@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\StudentRegistrationExport;
 use App\Exports\StudentRegistrationExportByFaculty;
+use App\Mail\RegistrationSend;
 use App\Mail\RegistrationUpdate;
 use App\Models\Convocation;
 use App\Models\EligibleStudent;
@@ -49,7 +50,7 @@ class StudentRegistrationController extends Controller
     }
 
 
-    public function eligibleStd()
+    public function eligibleStd(Request $request)
     {
         session_start();
 
@@ -61,6 +62,11 @@ class StudentRegistrationController extends Controller
         // if ($eligibleStudents->isEmpty()) {
         //     return view('noEligibleStudents'); // Redirects to another page
         // }
+
+        // $name= "Sajith";
+
+        // Mail:: to($request->email)->send(new RegistrationSend($name));
+
         return view('eligibleStd',compact('eligibleStudents','studentRegistrations','prices'));
 
     }
@@ -125,14 +131,13 @@ class StudentRegistrationController extends Controller
 
         session_start();
         $pro->convocationName = $_SESSION["convocationName"];
+        $_SESSION["regStatus"] = 'Yes';
+        $_SESSION["nameWithInitial"] = $request->nameWithInitial;
+        $_SESSION["regNum"] = $request->regNum;
+        // $_SESSION["convocationName"] = $request->convocationName;
+        $_SESSION["regPro"] = $pro;
 
-        $_SESSION["regStatus"]='Yes';
-        $_SESSION["nameWithInitial"]=$request->nameWithInitial;
-        $_SESSION["regNum"]=$request->regNum;
-
-
-        $_SESSION["regPro"]=$pro;
-//            $pro->save();
+        // $pro->save();
 
 
 
@@ -152,7 +157,13 @@ class StudentRegistrationController extends Controller
         $rGDocuments = json_decode($resultRegistration, true);
         $rGDocumentsCount = count($rGDocuments);
 
-        if($request->faculty=="Graduate Studies"){
+        $status= "Pending";
+
+        
+
+        Mail:: to($request->email)->send(new RegistrationSend($status));
+
+        if($request->faculty=="Graduate Studies" || $request->faculty=="Indigenous Knowledge & Community Studies"){
             try {
                 $pro->save();
             }catch (QueryException $e){
@@ -161,7 +172,7 @@ class StudentRegistrationController extends Controller
             }
             return redirect()->route('eligibleStd')
                 ->with('success','Registration successfully Completed.');
-        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies"){
+        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies" && $request->faculty!="Indigenous Knowledge & Community Studies"){
             try {
                 $pro->save();
             }catch (QueryException $e){

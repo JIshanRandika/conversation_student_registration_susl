@@ -48,6 +48,9 @@ function getMyPermission($id)
         case 20:
             return 'EBSC_Sport';
             break;
+        case 21:
+            return 'EBSC_CIKCS';
+            break;
         case 2:
             return 'mainStoreClark';
             break;

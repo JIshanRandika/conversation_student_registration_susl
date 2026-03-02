@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Exports\SurveyExport;
 use App\Models\Convocation;
 use App\Models\EligibleStudent;
-use App\Models\Survey;
+// use App\Models\Survey;
+use App\Models\SurveyResponse;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,9 +20,9 @@ class SurveyController extends Controller
      */
     public function index()
     {
-        $surveys = Survey::all();
+        $survey_responses = SurveyResponse::all();
         $convo = Convocation::all()->pluck('convocation', 'id');
-        return view('survey.index',compact('surveys','convo'));
+        return view('survey.index',compact('survey_responses', 'convo'));
     }
 
     /**
@@ -59,104 +60,114 @@ class SurveyController extends Controller
 
 //
 
-        $pro=new Survey();
+        $pro=new SurveyResponse();
+        $pro->regNum = $request->regNum;
         $pro->email = $request->email;
         $pro->contactNumber = $request->contactNumber;
         $pro->gender = $request->gender;
-        $pro->district = $request->district;
-        $pro->zScore = $request->zScore;
-        $pro->ethnicity = $request->ethnicity;
+        $pro->age = $request->age;
+        $pro->al_stream = $request->al_stream;
+        $pro->al_district = $request->al_district;
+        $pro->al_zscore = $request->al_zscore;
+        $pro->al_year = $request->al_year;
+        $pro->ol_english = $request->ol_english;
+        $pro->al_english = $request->al_english;
+        //section B
+        // $pro->ethnicity = $request->ethnicity;
         $pro->faculty = $request->faculty;
-        $pro->degreeFall = $request->degreeFall;
-        $pro->degreeProgram = $request->degreeProgram;
-        $pro->degreeType = $request->degreeType;
-        $pro->specialization = $request->specialization;
-        $pro->classReceived = $request->classReceived;
-        $pro->olEnglish = $request->olEnglish;
-        $pro->alEnglish = $request->alEnglish;
-        $pro->engSpeakSkill = $request->engSpeakSkill;
-        $pro->engListeningSkill = $request->engListeningSkill;
-        $pro->engWritingSkill = $request->engWritingSkill;
-        $pro->engReadingSkill = $request->engReadingSkill;
-        $pro->computerLiteracy = json_encode($request->computerLiteracy);
-        $pro->extraCurricular = $request->extraCurricular;
-        $pro->extraCurricularDes = $request->extraCurricularDes;
-        $pro->training = $request->training;
-        $pro->trainingDes = $request->trainingDes;
-        $pro->qualifications = $request->qualifications;
-        $pro->qualificationsDes = $request->qualificationsDes;
-        $pro->employment = $request->employment;
-        $pro->employmentDes = $request->employmentDes;
-        $pro->areaLive = $request->areaLive;
-        $pro->districtLife = $request->districtLife;
-        $pro->agaDivision = $request->agaDivision;
-        $pro->alSchool = $request->alSchool;
-        $pro->edumf = $request->edumf;
-        $pro->teachingMethods = $request->teachingMethods;
-        $pro->learningProcess = $request->learningProcess;
-        $pro->qualityOfLec = $request->qualityOfLec;
-        $pro->labFacilities = $request->labFacilities;
-        $pro->qualityOfClassrooms = $request->qualityOfClassrooms;
-        $pro->libraryFacilities = $request->libraryFacilities;
-        $pro->itFacilities = $request->itFacilities;
-        $pro->practicalKnowledge = $request->practicalKnowledge;
-        $pro->textBooks = $request->textBooks;
-        $pro->tutorials = $request->tutorials;
-        $pro->practicalTraining = $request->practicalTraining;
-        $pro->researchSkills = $request->researchSkills;
-        $pro->lecNotes = $request->lecNotes;
+        $pro->department = $request->department;
+        // $pro->degreeFall = $request->degreeFall;
+        $pro->degree_programme = $request->degree_programme;
+        $pro->degree_type = $request->degree_type;
+        $pro->medium = $request->medium;
+        // $pro->specialization = $request->specialization;
+        $pro->class_obtained = $request->class_obtained;
+        $pro->eng_speaking = $request->eng_speaking;
+        $pro->eng_listening = $request->eng_listening;
+        $pro->eng_writing = $request->eng_writing;
+        $pro->eng_reading = $request->eng_reading;
+
+        
+        $pro->computer_literacy_level = $request->computer_literacy_level;
+        $pro->abilities = json_encode($request->abilities);
+        $pro->internship_yesno = $request->internship_yesno;
+        $pro->internship_duration = $request->internship_duration;
+        $pro->internship_graded = $request->internship_graded;
+        $pro->internship_semester = $request->internship_semester;
+        $pro->other_courses_yesno = $request->other_courses_yesno;
+        $pro->other_course_type = $request->other_course_type;
+        $pro->other_course_completed = $request->other_course_completed;
+        $pro->other_course_field = $request->other_course_field;
+        $pro->extra_activities_yesno = $request->extra_activities_yesno;
+        $pro->extra_activities = json_encode($request->extra_activities);
+        // $pro->extraCurricular = $request->extraCurricular;
+        // $pro->extraCurricularDes = $request->extraCurricularDes;
+        $pro->employment_status = $request->employment_status;
+        $pro->employment_type = $request->employment_type;
+        $pro->employment_permanence = $request->employment_permanence;
+        $pro->employer_sector = $request->employer_sector;
+        $pro->employer_name = $request->employer_name;
+        $pro->occupation_category = $request->occupation_category;
+        $pro->job_economic_sector = $request->job_economic_sector;
+        $pro->when_found_job = $request->when_found_job;
+        $pro->job_field_match = $request->job_field_match;
+        $pro->use_skills = $request->use_skills;
+        $pro->outside_field_due = $request->outside_field_due;
+        $pro->salary_expectation = $request->salary_expectation;
+        $pro->gross_salary = $request->gross_salary;
+        $pro->career_growth_sat = $request->career_growth_sat;
+        $pro->consider_change = $request->consider_change;
+        $pro->unemp_reasons = json_encode($request->unemp_reasons);
+        //check again below 
+        $pro->unemp_reasons_other = $request->unemp_reasons_other;
+        $pro->future_employment_type = $request->future_employment_type;
+        $pro->expected_sector = $request->expected_sector;
+        $pro->took_steps = $request->took_steps;
+        $pro->job_search_steps = json_encode($request->job_search_steps);
+        //check again below 
+        $pro->job_search_steps_other = $request->job_search_steps_other;
+        $pro->reservation_wage = $request->reservation_wage;
+        $pro->expected_occupation = $request->expected_occupation;
+        $pro->expected_job_economic_sector = $request->expected_job_economic_sector;
+        $pro->job_search_duration = $request->job_search_duration;
+
+        $pro->career_goals = json_encode($request->career_goals);
+        //check again below 
+        $pro->career_goals_other = $request->career_goals_other;
+        $pro->university_satisfaction = $request->university_satisfaction;
+        $pro->dissatisfaction_reasons = $request->dissatisfaction_reasons;
+        
+        $pro->teaching_methods = $request->teaching_methods;
+        $pro->learning_process = $request->learning_process;
+        $pro->lecturer_quality = $request->lecturer_quality;
+        $pro->lab_facilities = $request->lab_facilities;
+        $pro->classroom_quality = $request->classroom_quality;
+        $pro->library_facilities = $request->library_facilities;
+        $pro->it_facilities = $request->it_facilities;
         $pro->workload = $request->workload;
-        $pro->qualityCommunication = $request->qualityCommunication;
-        $pro->helpfulTeachingMaterial = $request->helpfulTeachingMaterial;
-        $pro->promotionOfInteraction = $request->promotionOfInteraction;
-        $pro->assignmentAndFeedback = $request->assignmentAndFeedback;
-        $pro->supervisionOfProjectWork = $request->supervisionOfProjectWork;
-        $pro->monitoringRoleModel = $request->monitoringRoleModel;
-        $pro->monthlySalary = $request->monthlySalary;
-        $pro->situationAfterUniversityEduction = json_encode($request->situationAfterUniversityEduction);
-        $pro->lastExamDate = $request->lastExamDate;
-        $pro->sectorsWillingEmployee = json_encode($request->sectorsWillingEmployee);
-        $pro->employedAfterLastExam = $request->employedAfterLastExam;
-        $pro->waitedDaysForFirstJob = $request->waitedDaysForFirstJob;
-        $pro->firstAppointment = $request->firstAppointment;
-        $pro->currentEmploymentStatus = $request->currentEmploymentStatus;
-        $pro->typeEmployemt = $request->typeEmployemt;
-        $pro->organizationCurrentlyEmployed = $request->organizationCurrentlyEmployed;
-        $pro->sectorEmployed = $request->sectorEmployed;
-        $pro->currentPosition = $request->currentPosition;
-        $pro->jobEconomicSector = $request->jobEconomicSector;
-        $pro->currentGrossMonthlySalary = $request->currentGrossMonthlySalary;
-        $pro->findTheJob = $request->findTheJob;
-        $pro->aspectsInGettingJob = json_encode($request->aspectsInGettingJob);
-        $pro->jobRelatedDegree = $request->jobRelatedDegree;
-        $pro->whenFIndCurrentJob = $request->whenFIndCurrentJob;
-        $pro->satisfiedCurrentJob = $request->satisfiedCurrentJob;
-        $pro->howLongWaitedToGetJob = $request->howLongWaitedToGetJob;
-        $pro->lookingNowEmployee = $request->lookingNowEmployee;
-        $pro->indicateReason = $request->indicateReason;
-        $pro->obstaclesForJob = $request->obstaclesForJob;
-        $pro->willingToFindJob = $request->willingToFindJob;
-        $pro->jobRequest = $request->jobRequest;
-        $pro->jobOverQualified = $request->jobOverQualified;
-        $pro->careerGoalsNextTwoYears = json_encode($request->careerGoalsNextTwoYears);
-        $pro->universityEducation = $request->universityEducation;
-        $pro->employmentAfterGraduation = $request->employmentAfterGraduation;
+        
+        $pro->last_university_exam = $request->last_university_exam;
+        $pro->facilitate_employment = $request->facilitate_employment;
+        $pro->other_comments = $request->other_comments;
+        
 //        $pro->stdName = $request->stdName;
 //        $pro->regNum = $request->regNum;
 //        $pro->convocationName = $request->convoName;
 
 
-        session_start();
-        $pro->stdName = $_SESSION["stdName"];
+         session_start();
+        // $pro->stdName = $_SESSION["stdName"];
         $pro->regNum = $_SESSION["user_reg"];
-        $pro->convocationName=$_SESSION["convocationName"];
+        $pro->convocationName = $_SESSION["convocationName"];
+
 
         try {
                 $pro->save();
-        }catch (QueryException $e){
-            return redirect()->route('eligibleStd')
-                ->with('success',$e);
-        }
+        }catch (QueryException $e) {
+    \Log::error($e); // Log the actual exception for debugging
+    return redirect()->route('eligibleStd')
+        ->with('error', 'Database error: ' . $e->getMessage());
+}
         try {
             $_SESSION["regPro"]->save();
         }catch (QueryException $e){
@@ -166,27 +177,26 @@ class SurveyController extends Controller
 
         return redirect()->route('eligibleStd')
             ->with('success','Registration successfully Completed.');
-//            ->with('success','safda');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Survey  $survey
+     * @param  \App\Models\SurveyResponse  $survey
      * @return \Illuminate\Http\Response
      */
-    public function show(Survey $survey)
+    public function show(SurveyResponse $surveyresponses)
     {
-        return view('survey.show',compact('survey'));
+        return view('survey.show',compact('surveyresponses'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Survey  $survey
+     * @param  \App\Models\SurveyResponse  $survey
      * @return \Illuminate\Http\Response
      */
-    public function edit(Survey $survey)
+    public function edit(SurveyResponse $surveyresponse)
     {
         //
     }
@@ -195,10 +205,10 @@ class SurveyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Survey  $survey
+     * @param  \App\Models\SurveyResponse  $survey
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Survey $survey)
+    public function update(Request $request, SurveyResponse $surveyresponse)
     {
         //
     }
@@ -206,19 +216,21 @@ class SurveyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Survey  $survey
+     * @param  \App\Models\SurveyResponse  $survey
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Survey $survey)
+    public function destroy(SurveyResponse $surveyresponse)
     {
-        $survey -> delete();
+        $surveyresponse->delete();
+        return redirect()->route('survey.index')
+                    ->with('success', 'Survey response deleted.');
 
     }
 
     public static function checkSurvey ($regNumber){
 
         return collect(DB::select('
-SELECT surveys.regNum FROM surveys;
+SELECT survey_responses.regNum FROM survey_responses;
 '))->where('regNum', '=', $regNumber);
 
     }

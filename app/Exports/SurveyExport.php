@@ -4,7 +4,8 @@ namespace App\Exports;
 
 use App\Models\Convocation;
 use App\Models\StudentRegistration;
-use App\Models\Survey;
+// use App\Models\Survey;
+use App\Models\SurveyResponse;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -36,7 +37,7 @@ class SurveyExport implements FromView
 //        ]);
 
         return view('survey.table', [
-            'surveys' => Survey::query()
+            'survey_responses' => SurveyResponse::query()
                 ->where('convocationName',$convo[$this->convocationName])
                 ->get()
         ]);

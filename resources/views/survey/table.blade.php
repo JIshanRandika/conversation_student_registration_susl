@@ -1,189 +1,166 @@
 <table>
     <thead>
-    <tr>
-        <th>RegNum</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Contact Number</th>
-        <th>Gender</th>
-        <th>District</th>
-        <th>Z-Score</th>
-        <th>Ethnicity</th>
-        <th>Faculty/Institution:</th>
-        <th>Under which of the following does your degree fall?</th>
-        <th>Name of the Degree Programme: EX: BSC Business Administration(Business Economics)(Honours)</th>
-        <th>Degree type:</th>
-        <th>If Special/Honours, please specify area of specialization: (EX: Economics)</th>
-        <th>Medium of Instruction</th>
-        <th>Medium of Instruction</th>
-        <th>The Grade you received for GCE(O/L) English Language</th>
-        <th>The Grade you received for GCE(A/L) General English</th>
-        <th>Speaking Skills</th>
-        <th>Listening</th>
-        <th>Writing Skills</th>
-        <th>Reading Skills</th>
-        <th>Your computer literacy</th>
-        <th>Extra-curricular activities</th>
-        <th>Specification of Extra-curricular activities</th>
-        <th>Internships/Vocational training</th>
-        <th>Specification of Internships/Vocational training</th>
-        <th>Other educational/professional qualifications</th>
-        <th>Specification of Other educational/professional qualifications</th>
-        <th>Full/part-time employment</th>
-        <th>Specification of Full/part-time employment</th>
-        <th>Which sort of area have you lived most of your life?</th>
-        <th>(District) Area in Sri Lanka that you lived in for most of your life</th>
-        <th>(AGA Division) Area in Sri Lanka that you lived in for most of your life</th>
-        <th>What type of school did you go to for your GCE A/L?</th>
-        <th>What is the highest level of education achieved by either your father and/or mother?</th>
-        <th>Teaching methods used at the university are effective</th>
-        <th>Learning process is suitable for current job environment</th>
-        <th>The quality of lecturers/instructors is good</th>
-        <th>The lab facilities provided are satisfactory</th>
-        <th>The quality of classrooms is good</th>
-        <th>The library facilities are satisfactory</th>
-        <th>IT facilities are satisfactory</th>
-        <th>Practical knowledge is acquired through course work</th>
-        <th>Text books are used in courses taught</th>
-        <th>Tutorials are used as learning tools</th>
-        <th>Practical training is a part of the university education</th>
-        <th>Research skills are developed during the study period</th>
-        <th>Learning is mostly done by memorizing the lecture notes</th>
-        <th>Workload assigned is very high</th>
-        <th>Quality communication at lectures or laboratories</th>
-        <th>Helpful teaching material</th>
-        <th>Promotion of interaction through group work</th>
-        <th>Assignment and feedback given</th>
-        <th>Supervision of project work</th>
-        <th>Mentoring and being a role model</th>
-        <th>How much did you expect your gross monthly salary(In Rupees) to be after your university education?</th>
-        <th>Which of the following describes your situation after your university education</th>
-        <th>When was your last university exam?</th>
-        <th>Which sector(s) are you willing to be employed in?</th>
-        <th>Were you employed at any point after your last exam?</th>
-        <th>How long did you wait to get your first job after the last day of final exam</th>
-        <th>What is the date of your first appointment?</th>
-        <th>What is your current employment status?</th>
-        <th>What is your current employment status?</th>
-        <th>Name of the organization currently employed</th>
-        <th>Which sector are you employed in?</th>
-        <th>The position you hold currently?</th>
-        <th>To which economic sector does your current job belong to?</th>
-        <th>What is your current gross monthly salary (In Rupees)?</th>
-        <th>What is your current gross monthly salary (In Rupees)?</th>
-        <th>What do you think were the most important aspects in getting this job?</th>
-        <th>Is this job related to the field you study in your degree?</th>
-        <th>When did you find your current job?</th>
-        <th>How satisfied are you with your current job?</th>
-        <th>How long have you been waited to get this job since the effecive date of your degree?</th>
-        <th>Are looking for employment right now?</th>
-        <th>If no, please indicate the reason(s) and skip to 40)</th>
-        <th>What do you think are the main obstacles for you to get a job? Please give details</th>
-        <th>Accept a job that is not in the field you stuied at the university</th>
-        <th>Move if a job requires it</th>
-        <th>Accept a job that you are over-qualified for</th>
-        <th>What are the career goals for the next two years?</th>
-        <th>How satisfied are you with your university education?</th>
-        <th>What do you think could be done to facilitate the first employment after graduation?</th>
-        <th>Convocation Name</th>
-        <th>Created At</th>
-        <th>Updated At</th>
-
-    </tr>
+        <tr>
+            <th>Registration Number</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>AL Stream</th>
+            <th>AL District</th>
+            <th>AL Zscore</th>
+            <th>AL Year</th>
+            <th>OL English Grade</th>
+            <th>AL English Grade</th>
+            <th>Faculty</th>
+            <th>Department</th>
+            <th>Degree Programme</th>
+            <th>Degree Type</th>
+            <th>Medium</th>
+            <th>Class Obtained</th>
+            <th>English Speaking</th>
+            <th>English Listening</th>
+            <th>English Writing</th>
+            <th>English Reading</th>
+            <th>Computer Literacy</th>
+            <th>Computer Abilities</th>
+            <th>Internship</th>
+            <th>Internship Duration</th>
+            <th>Internship Graded</th>
+            <th>Internship Semester</th>
+            <th>Other Courses</th>
+            <th>Course Type</th>
+            <th>Course Completed</th>
+            <th>Course Field</th>
+            <th>Involved in Extracurricular Activities</th>
+            <th>Extra Activities</th>
+            <th>Employment Status</th>
+            <th>Employment Type</th>
+            <th>Employment Permanence</th>
+            <th>Employer Sector</th>
+            <th>Institution Name</th>
+            <th>Occupation Category</th>
+            <th>Economic Sector</th>
+            <th>Job Finding Time</th>
+            <th>Job Field Match</th>
+            <th>Use of Skills</th>
+            <th>Outside Field Due</th>
+            <th>Salary Expectation</th>
+            <th>Gross Salary</th>
+            <th>Career Growth</th>
+            <th>Consider Change</th>
+            <th>Unemployment Reasons</th>
+            <th>Other Unemployment Reasons</th>
+            <th>Expected Employment Type</th>
+            <th>Expected Sector</th>
+            <th>Job Search Steps</th>
+            <th>Other Job Search Steps</th>
+            <th>Job Search Methods</th>
+            <th>Reservation Wage</th>
+            <th>Expected Occupation</th>
+            <th>Expected Economic Sector</th>
+            <th>Job Search Duration</th>
+            <th>Career Goals</th>
+            <th>Other Career Goals</th>
+            <th>University Satisfaction</th>
+            <th>Dissatisfaction Reasons</th>
+            <th>Teaching Methods</th>
+            <th>Learning Process</th>
+            <th>Lecturer Quality</th>
+            <th>Lab Facilities</th>
+            <th>Classroom Quality</th>
+            <th>Library Facilities</th>
+            <th>IT Facilities</th>
+            <th>Workload</th>
+            <th>Last Exam Date</th>
+            <th>Employment Facilitation</th>
+            <th>Other Comments</th>
+            <th>Convocation Name</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+        </tr>
     </thead>
     <tbody>
-    @foreach($surveys as $survey)
+        @foreach($survey_responses as $survey_response)
         <tr>
-            <td>{{ $survey->regNum }}</td>
-            <td>{{ $survey->stdName }}</td>
-            <td>{{ $survey->email }}</td>
-            <td>{{ $survey->contactNumber }}</td>
-            <td>{{ $survey->gender }}</td>
-            <td>{{ $survey->district }}</td>
-            <td>{{ $survey->zScore }}</td>
-            <td>{{ $survey->ethnicity }}</td>
-            <td>{{ $survey->faculty }}</td>
-            <td>{{ $survey->degreeFall }}</td>
-            <td>{{ $survey->degreeProgram }}</td>
-            <td>{{ $survey->degreeType }}</td>
-            <td>{{ $survey->specialization }}</td>
-            <td>{{ $survey->medium }}</td>
-            <td>{{ $survey->classReceived }}</td>
-            <td>{{ $survey->olEnglish }}</td>
-            <td>{{ $survey->alEnglish }}</td>
-            <td>{{ $survey->engSpeakSkill }}</td>
-            <td>{{ $survey->engListeningSkill }}</td>
-            <td>{{ $survey->engWritingSkill }}</td>
-            <td>{{ $survey->engReadingSkill }}</td>
-            <td>{{ $survey->computerLiteracy }}</td>
-            <td>{{ $survey->extraCurricular }}</td>
-            <td>{{ $survey->extraCurricularDes }}</td>
-            <td>{{ $survey->training }}</td>
-            <td>{{ $survey->trainingDes }}</td>
-            <td>{{ $survey->qualifications }}</td>
-            <td>{{ $survey->qualificationsDes }}</td>
-            <td>{{ $survey->employment }}</td>
-            <td>{{ $survey->employmentDes }}</td>
-            <td>{{ $survey->areaLive }}</td>
-            <td>{{ $survey->districtLife }}</td>
-            <td>{{ $survey->agaDivision }}</td>
-            <td>{{ $survey->alSchool }}</td>
-            <td>{{ $survey->edumf }}</td>
-            <td>{{ $survey->teachingMethods }}</td>
-            <td>{{ $survey->learningProcess }}</td>
-            <td>{{ $survey->qualityOfLec }}</td>
-            <td>{{ $survey->labFacilities }}</td>
-            <td>{{ $survey->qualityOfClassrooms }}</td>
-            <td>{{ $survey->libraryFacilities }}</td>
-            <td>{{ $survey->itFacilities }}</td>
-            <td>{{ $survey->practicalKnowledge }}</td>
-            <td>{{ $survey->textBooks }}</td>
-            <td>{{ $survey->tutorials }}</td>
-            <td>{{ $survey->practicalTraining }}</td>
-            <td>{{ $survey->researchSkills }}</td>
-            <td>{{ $survey->lecNotes }}</td>
-            <td>{{ $survey->workload }}</td>
-            <td>{{ $survey->qualityCommunication }}</td>
-            <td>{{ $survey->helpfulTeachingMaterial }}</td>
-            <td>{{ $survey->promotionOfInteraction }}</td>
-            <td>{{ $survey->assignmentAndFeedback }}</td>
-            <td>{{ $survey->supervisionOfProjectWork }}</td>
-            <td>{{ $survey->monitoringRoleModel }}</td>
-            <td>{{ $survey->monthlySalary }}</td>
-            <td>{{ $survey->situationAfterUniversityEduction }}</td>
-            <td>{{ $survey->lastExamDate }}</td>
-            <td>{{ $survey->sectorsWillingEmployee }}</td>
-            <td>{{ $survey->employedAfterLastExam }}</td>
-            <td>{{ $survey->waitedDaysForFirstJob }}</td>
-            <td>{{ $survey->firstAppointment }}</td>
-            <td>{{ $survey->currentEmploymentStatus }}</td>
-            <td>{{ $survey->typeEmployemt }}</td>
-            <td>{{ $survey->organizationCurrentlyEmployed }}</td>
-            <td>{{ $survey->sectorEmployed }}</td>
-            <td>{{ $survey->currentPosition }}</td>
-            <td>{{ $survey->jobEconomicSector }}</td>
-            <td>{{ $survey->currentGrossMonthlySalary }}</td>
-            <td>{{ $survey->findTheJob }}</td>
-            <td>{{ $survey->aspectsInGettingJob }}</td>
-            <td>{{ $survey->jobRelatedDegree }}</td>
-            <td>{{ $survey->whenFIndCurrentJob }}</td>
-            <td>{{ $survey->satisfiedCurrentJob }}</td>
-            <td>{{ $survey->howLongWaitedToGetJob }}</td>
-            <td>{{ $survey->lookingNowEmployee }}</td>
-            <td>{{ $survey->indicateReason }}</td>
-            <td>{{ $survey->obstaclesForJob }}</td>
-            <td>{{ $survey->willingToFindJob }}</td>
-            <td>{{ $survey->jobRequest }}</td>
-            <td>{{ $survey->jobOverQualified }}</td>
-            <td>{{ $survey->careerGoalsNextTwoYears }}</td>
-            <td>{{ $survey->universityEducation }}</td>
-            <td>{{ $survey->employmentAfterGraduation }}</td>
-            <td>{{ $survey->convocationName }}</td>
-            <td>{{ $survey->created_at }}</td>
-            <td>{{ $survey->updated_at }}</td>
-
-
+            <td>{{ $survey_response->regNum }}</td>
+            <td>{{ $survey_response->email }}</td>
+            <td>{{ $survey_response->contactNumber }}</td>
+            <td>{{ $survey_response->gender }}</td>
+            <td>{{ $survey_response->age }}</td>
+            <td>{{ $survey_response->al_stream }}</td>
+            <td>{{ $survey_response->al_district }}</td>
+            <td>{{ $survey_response->al_zscore }}</td>
+            <td>{{ $survey_response->al_year }}</td>
+            <td>{{ $survey_response->ol_english }}</td>
+            <td>{{ $survey_response->al_english }}</td>
+            <td>{{ $survey_response->faculty }}</td>
+            <td>{{ $survey_response->department }}</td>
+            <td>{{ $survey_response->degree_programme }}</td>
+            <td>{{ $survey_response->degree_type }}</td>
+            <td>{{ $survey_response->medium }}</td>
+            <td>{{ $survey_response->class_obtained }}</td>
+            <td>{{ $survey_response->eng_speaking }}</td>
+            <td>{{ $survey_response->eng_listening }}</td>
+            <td>{{ $survey_response->eng_writing }}</td>
+            <td>{{ $survey_response->eng_reading }}</td>
+            <td>{{ $survey_response->computer_literacy_level }}</td>
+            <td>{{ $survey_response->abilities }}</td>
+            <td>{{ $survey_response->internship_yesno }}</td>
+            <td>{{ $survey_response->internship_duration }}</td>
+            <td>{{ $survey_response->internship_graded }}</td>
+            <td>{{ $survey_response->internship_semester }}</td>
+            <td>{{ $survey_response->other_courses_yesno }}</td>
+            <td>{{ $survey_response->other_course_type }}</td>
+            <td>{{ $survey_response->other_course_completed }}</td>
+            <td>{{ $survey_response->other_course_field }}</td>
+            <td>{{ $survey_response->extra_activities_yesno }}</td>
+            <td>{{ $survey_response->extra_activities }}</td>
+            <td>{{ $survey_response->employment_status }}</td>
+            <td>{{ $survey_response->employment_type }}</td>
+            <td>{{ $survey_response->employment_permanence }}</td>
+            <td>{{ $survey_response->employer_sector }}</td>
+            <td>{{ $survey_response->employer_name }}</td>
+            <td>{{ $survey_response->occupation_category }}</td>
+            <td>{{ $survey_response->job_economic_sector }}</td>
+            <td>{{ $survey_response->when_found_job }}</td>
+            <td>{{ $survey_response->job_field_match }}</td>
+            <td>{{ $survey_response->use_skills }}</td>
+            <td>{{ $survey_response->outside_field_due }}</td>
+            <td>{{ $survey_response->salary_expectation }}</td>
+            <td>{{ $survey_response->gross_salary }}</td>
+            <td>{{ $survey_response->career_growth_sat }}</td>
+            <td>{{ $survey_response->consider_change }}</td>
+            <td>{{ $survey_response->unemp_reasons }}</td>
+            <td>{{ $survey_response->unemp_reasons_other }}</td>
+            <td>{{ $survey_response->future_employment_type }}</td>
+            <td>{{ $survey_response->expected_sector }}</td>
+            <td>{{ $survey_response->took_steps }}</td>
+            <td>{{ $survey_response->job_search_steps }}</td>
+            <td>{{ $survey_response->job_search_steps_other }}</td>
+            <td>{{ $survey_response->reservation_wage }}</td>
+            <td>{{ $survey_response->expected_occupation }}</td>
+            <td>{{ $survey_response->expected_job_economic_sector }}</td>
+            <td>{{ $survey_response->job_search_duration }}</td>
+            <td>{{ $survey_response->career_goals }}</td>
+            <td>{{ $survey_response->career_goals_other }}</td>
+            <td>{{ $survey_response->university_satisfaction }}</td>
+            <td>{{ $survey_response->dissatisfaction_reasons }}</td>
+            <td>{{ $survey_response->teaching_methods }}</td>
+            <td>{{ $survey_response->learning_process }}</td>
+            <td>{{ $survey_response->lecturer_quality }}</td>
+            <td>{{ $survey_response->lab_facilities }}</td>
+            <td>{{ $survey_response->classroom_quality }}</td>
+            <td>{{ $survey_response->library_facilities }}</td>
+            <td>{{ $survey_response->it_facilities }}</td>
+            <td>{{ $survey_response->workload }}</td>
+            <td>{{ $survey_response->last_university_exam }}</td>
+            <td>{{ $survey_response->facilitate_employment }}</td>
+            <td>{{ $survey_response->other_comments }}</td>
+            <td>{{ $survey_response->convocationName }}</td>
+            <td>{{ $survey_response->created_at }}</td>
+            <td>{{ $survey_response->updated_at }}</td>
         </tr>
-    @endforeach
+        @endforeach
     </tbody>
 </table>

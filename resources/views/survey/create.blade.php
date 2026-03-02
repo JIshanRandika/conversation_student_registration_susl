@@ -95,46 +95,58 @@
 {{--                </div>--}}
 {{--            </div>--}}
 
-            <strong>01. Contact Details:</strong>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>a. Email:</strong>
-                    <input  required type="email" name="email" class="form-control" placeholder="Email">
-                </div>
-            </div>
+            {{-- SECTION A – GENERAL INFORMATION --}}
+<h4>Section A - General Information</h4>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>b. Contact Number:</strong>
-                    <input required type="text" name="contactNumber" class="form-control" placeholder="Contact Number">
-                </div>
-            </div>
+<div class="form-group">
+    <label for="regNum">1. Student Registration No:</label>
+    <input type="text" id="regNum" name="regNum" class="form-control" required>
+</div>
 
+<div class="form-group">
+    <label for="email">2. Email address:</label>
+    <input type="email" id="email" name="email" class="form-control" required>
+</div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
-{{--                <div class="form-group">--}}
-{{--                    {{Form::label('property', 'Please Select a Property ') }}--}}
-{{--                    {{Form::select('property', ['Holiday Resort' => 'Holiday Resort', 'NEST' => 'NEST','Agri Farm Kabana' => 'Agri Farm Kabana', 'Agri Farm Dining Room' => 'Agri Farm Dining Room', 'Audio Visual Unit' => 'Audio Visual Unit'], null, ['class'=>'form-control','v-model' => 'property_type'])}}--}}
+<div class="form-group">
+    <label for="contactNumber">3. Contact number:</label>
+    <input type="text" id="contactNumber" name="contactNumber" class="form-control" required>
+</div>
 
-{{--                </div>--}}
+<div class="form-group">
+    <label>4. Gender:</label><br>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="genderM" value="Male" required>
+        <label class="form-check-label" for="genderM">Male</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="gender" id="genderF" value="Female">
+        <label class="form-check-label" for="genderF">Female</label>
+    </div>
+</div>
 
-                <div class="form-group">
+<div class="form-group">
+    <label for="age">5. Age:</label>
+    <input type="number" id="age" name="age" class="form-control" required>
+</div>
 
-                    <strong>02. Gender:</strong>
-                    <select required name="gender" class="custom-select" id="inputGroupSelect01"  >
-                        <option></option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>03. GCE (A/L) Examination, District:</strong>
-                    <select required name="district" class="custom-select" id="inputGroupSelect02" >
-                        <option></option>
-                        <option value="Ampara">Ampara</option>
+<div class="form-row">
+    <div class="col">
+        <label>6. GCE A/L Examination</label>
+        <select name="al_stream" class="form-control" required>
+            <option value="">Select stream</option>
+            <option value="Bio-science">Bio-science</option>
+            <option value="Physical Science">Physical Science</option>
+            <option value="Commerce">Commerce</option>
+            <option value="Arts">Arts</option>
+            <option value="Technology">Technology</option>
+        </select>
+    </div>
+    <div class="col">
+        <label>District:</label>
+        <select name="al_district" class="form-control" required>
+            <option value="">Select district</option>
+            <option value="Ampara">Ampara</option>
                         <option value="Anuradhapura">Anuradhapura</option>
                         <option value="Badulla">Badulla</option>
                         <option value="Batticaloa">Batticaloa</option>
@@ -159,996 +171,691 @@
                         <option value="Ratnapura">Ratnapura</option>
                         <option value="Trincomalee">Trincomalee</option>
                         <option value="Vavuniya">Vavuniya</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>04. GCE (A/L) Examination, Z-Score or Aggregate Marks:</strong>
-                    <input required type="text" name="zScore" class="form-control" placeholder="Z-Score or Aggregate Marks">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>05. Ethnicity:</strong>
-                    <select required name="ethnicity" class="custom-select" id="inputGroupSelect03" >
-                        <option></option>
-                        <option value="Sinhala">Sinhala</option>
-                        <option value="Tamil">Tamil</option>
-                        <option value="Muslim">Muslim</option>
-                        <option value="Burgher">Burgher</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>05. Faculty/Institution:</strong>
-                    <input readonly value="{{ $eligibleStudent->faculty }}" required type="text" name="faculty" class="form-control" placeholder="Faculty/Institution">
-                </div>
-            </div>
-            
-            
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>05. Under which of the following does your degree fall?</strong>
-                    <select required name="degreeFall" class="custom-select" id="inputGroupSelect05" >
-                        <option></option>
-                        <option value="External">External</option>
-                        <option value="Internal">Internal</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>7.1. Name of the Degree Programme: EX: BSC Business Administration(Business Economics)(Honours):</strong>
-                    <input required type="text" name="degreeProgram" class="form-control" placeholder="Name of the Degree Programme">
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>08. Degree type:</strong>
-                    <select required name="degreeType" class="custom-select" id="inputGroupSelect06" >
-                        <option></option>
-                        <option value="General (3 years)">General (3 years)</option>
-                        <option value="General (4 years)">General (4 years)</option>
-                        <option value="Special">Special</option>
-                        <option value="Honours">Honours</option>
-                        <option value="Medical (5 years)">Medical (5 years)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>8.1. If Special/Honours, please specify area of specialization: (EX: Economics):</strong>
-                    <input required type="text" name="specialization" class="form-control" placeholder="Area of specialization">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>09. Medium of Instruction:</strong>
-                    <select required name="medium" class="custom-select" id="inputGroupSelect07" >
-                        <option></option>
-                        <option value="English">English</option>
-                        <option value="Sinhala">Sinhala</option>
-                        <option value="Tamil">Tamil</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>10. Class received:</strong>
-                    <select required name="classReceived" class="custom-select" id="inputGroupSelect08" >
-                        <option></option>
-                        <option value="First Class">First Class</option>
-                        <option value="Second Upper">Second Upper</option>
-                        <option value="Second Lower">Second Lower</option>
-                        <option value="General Pass">General Pass</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong>11. English Language Proficiency</strong>
-                <div class="form-group">
-                    <strong>11.1 The Grade you received for GCE(O/L) English Language:</strong>
-                    <select required name="olEnglish" class="custom-select" id="inputGroupSelect09" >
-                        <option></option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="S">S</option>
-                        <option value="F">F</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>11.2 The Grade you received for GCE(A/L) General English:</strong>
-                    <select required name="alEnglish" class="custom-select" id="inputGroupSelect10" >
-                        <option></option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="S">S</option>
-                        <option value="F">F</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <strong>11.3 English language proficiency at the University Level(as per your own understanding):</strong>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>a. Speaking Skills:</strong>
-                    <select required name="engSpeakSkill" class="custom-select" id="inputGroupSelect11" >
-                        <option></option>
-                        <option value="Poor">Poor</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
-                        <option value="Excellent">Excellent</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>b. Listening Skills:</strong>
-                    <select required name="engListeningSkill" class="custom-select" id="inputGroupSelect12" >
-                        <option></option>
-                        <option value="Poor">Poor</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
-                        <option value="Excellent">Excellent</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>c. Writing Skills:</strong>
-                    <select required name="engWritingSkill" class="custom-select" id="inputGroupSelect13" >
-                        <option></option>
-                        <option value="Poor">Poor</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
-                        <option value="Excellent">Excellent</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>d. Reading Skills:</strong>
-                    <select required name="engReadingSkill" class="custom-select" id="inputGroupSelect14" >
-                        <option></option>
-                        <option value="Poor">Poor</option>
-                        <option value="Average">Average</option>
-                        <option value="Good">Good</option>
-                        <option value="Excellent">Excellent</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>12. Your computer literacy (Mark with an “ √ ” to all that applies):</strong><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Have not used a computer at all">Have not used a computer at all</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Familiar with browsing the web">Familiar with browsing the web</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Use email regularly">Use email regularly</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Ability to use MicrosoftOffice package(Word, Excel,...)">Ability to use MicrosoftOffice package(Word, Excel,...)</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Used the computer to search for jobs">Used the computer to search for jobs</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="computerLiteracy[]" value="Ability write computer programs">Ability write computer programs</label>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong>13. Were you involved in any of the following during your university years?</strong>
-                    <table id="divFrmRegister" class="table table-bordered form-duration-div">
-                        <tr>
-                            <th></th>
-                            <th>No</th>
-                            <th>Yes</th>
-                            <th>If yes, please specify</th>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td>1. Extra-curricular activities</td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="extraCurricular" value="No"></td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="extraCurricular" value="Yes"></td>
-                                <td>
-                                    <input type="text" name="extraCurricularDes" class="form-control" placeholder="">
-                                </td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td>2. Internships/Vocational training</td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="training" value="No"></td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="training" value="Yes"></td>
-                                <td>
-                                    <input type="text" name="trainingDes" class="form-control" placeholder="">
-                                </td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td>3. Other educational/professional qualifications</td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualifications" value="No"></td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualifications" value="Yes"></td>
-                                <td>
-                                    <input type="text" name="qualificationsDes" class="form-control" placeholder="">
-                                </td>
-                            </div>
-                        </tr>
-                        <tr>
-                            <div class="form-group">
-                                <td>4. Full/part-time employment</td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="employment" value="No"></td>
-                                <td><input required style="margin-top: 5px" type="radio" class="flat" name="employment" value="Yes"></td>
-                                <td>
-                                    <input type="text" name="employmentDes" class="form-control" placeholder="">
-                                </td>
-                            </div>
-                        </tr>
-                    </table>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>14. Which sort of area have you lived most of your life?</strong>
-                    <select required name="areaLive" class="custom-select" id="inputGroupSelect15" >
-                        <option></option>
-                        <option value="Urban">Urban</option>
-                        <option value="Semi Urban">Semi Urban</option>
-                        <option value="Rural">Rural</option>
-                        <option value="Foreign country">Foreign country</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <strong>15. Please indicate the area in Sri Lanka that you lived in for most of your life</strong>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>District:</strong>
-                    <select required name="districtLife" class="custom-select" id="inputGroupSelect16" >
-                        <option></option>
-                        <option value="Ampara">Ampara</option>
-                        <option value="Anuradhapura">Anuradhapura</option>
-                        <option value="Badulla">Badulla</option>
-                        <option value="Batticaloa">Batticaloa</option>
-                        <option value="Colombo">Colombo</option>
-                        <option value="Galle">Galle</option>
-                        <option value="Gampaha">Gampaha</option>
-                        <option value="Hambantota">Hambantota</option>
-                        <option value="Jaffna">Jaffna</option>
-                        <option value="Kalutara">Kalutara</option>
-                        <option value="Kandy">Kandy</option>
-                        <option value="Kegalle">Kegalle</option>
-                        <option value="Kilinochchi">Kilinochchi</option>
-                        <option value="Kurunegala">Kurunegala</option>
-                        <option value="Mannar">Mannar</option>
-                        <option value="Matale">Matale</option>
-                        <option value="Matara">Matara</option>
-                        <option value="Monaragala">Monaragala</option>
-                        <option value="Mullaitivu">Mullaitivu</option>
-                        <option value="Nuwara Eliya">Nuwara Eliya</option>
-                        <option value="Polonnaruwa">Polonnaruwa</option>
-                        <option value="Puttalam">Puttalam</option>
-                        <option value="Ratnapura">Ratnapura</option>
-                        <option value="Trincomalee">Trincomalee</option>
-                        <option value="Vavuniya">Vavuniya</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>AGA Division</strong>
-                    <input required type="text" name="agaDivision" class="form-control" placeholder="AGA Division">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>16. What type of school did you go to for your GCE A/L?</strong>
-                    <select required name="alSchool" class="custom-select" id="inputGroupSelect17" >
-                        <option></option>
-                        <option value="National School">National School</option>
-                        <option value="Provincial School">Provincial School</option>
-                        <option value="Private/semi govt.school">Private/semi govt.school</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>17. What is the highest level of education achieved by either your father and/or mother??</strong>
-                    <select required name="edumf" class="custom-select" id="inputGroupSelect18" >
-                        <option></option>
-                        <option value="Less than GCE O/L">Less than GCE O/L</option>
-                        <option value="Passes GCE O/L">Passes GCE O/L</option>
-                        <option value="Passes GCE A/L">Passes GCE A/L</option>
-                        <option value="Degree or Equivalent or higher">Degree or Equivalent or higher</option>
-                        <option value="Not known">Not known</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <strong>18. To what extent do you agree with the following statements?</strong>
-                <table id="divFrmRegister" class="table table-bordered form-duration-div">
-                    <tr>
-                        <th>Statement</th>
-                        <th>Strongly Agree</th>
-                        <th>Somewhat Agree</th>
-                        <th>Undecided</th>
-                        <th>Somewhat Disagree</th>
-                        <th>Strongly Disagree</th>
-                    </tr>
-                    <tr>
-                        <div class="form-group">
-                            <td>1. Teaching methods used at the university are effective</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="teachingMethods" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="teachingMethods" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="teachingMethods" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="teachingMethods" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="teachingMethods" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>2. Learning process is suitable for current job environment</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="learningProcess" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="learningProcess" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="learningProcess" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="learningProcess" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="learningProcess" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>3. The quality of lecturers/instructors is good</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfLec" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfLec" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfLec" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfLec" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfLec" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>4. The lab facilities provided are satisfactory</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="labFacilities" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="labFacilities" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="labFacilities" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="labFacilities" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="labFacilities" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>5. The quality of classrooms is good</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfClassrooms" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfClassrooms" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfClassrooms" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfClassrooms" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="qualityOfClassrooms" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>6. The library facilities are satisfactory</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="libraryFacilities" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="libraryFacilities" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="libraryFacilities" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="libraryFacilities" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="libraryFacilities" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>7. IT facilities are satisfactory</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="itFacilities" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="itFacilities" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="itFacilities" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="itFacilities" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="itFacilities" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>8. Practical knowledge is acquired through course work</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalKnowledge" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalKnowledge" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalKnowledge" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalKnowledge" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalKnowledge" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>9. Text books are used in courses taught</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="textBooks" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="textBooks" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="textBooks" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="textBooks" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="textBooks" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>10. Tutorials are used as learning tools</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="tutorials" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="tutorials" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="tutorials" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="tutorials" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="tutorials" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>11. Practical training is a part of the university education</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalTraining" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalTraining" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalTraining" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalTraining" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="practicalTraining" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>12. Research skills are developed during the study period</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="researchSkills" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="researchSkills" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="researchSkills" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="researchSkills" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="researchSkills" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>13. Learning is mostly done by memorizing the lecture notes</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="lecNotes" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="lecNotes" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="lecNotes" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="lecNotes" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="lecNotes" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                    <tr>
-                        <div class="form-group">
-                            <td>14. Workload assigned is very high</td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="workload" value="Strongly Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="workload" value="Somewhat Agree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="workload" value="Undecided"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="workload" value="Somewhat Disagree"></td>
-                            <td><input required style="margin-top: 5px" type="radio" class="flat" name="workload" value="Strongly Disagree"></td>
-                        </div>
-                    </tr>
-
-                </table>
-
-            </div>
-
-            <strong>19. Indicate the names of the Lecturer / Professor(s) who have helped you most during your university education.</strong>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>a. Quality communication at lectures or laboratories</strong>
-                    <input type="text" name="qualityCommunication" class="form-control" placeholder="">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>b. Helpful teaching material</strong>
-                    <input type="text" name="helpfulTeachingMaterial" class="form-control" placeholder="">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>c. Promotion of interaction through group work</strong>
-                    <input type="text" name="promotionOfInteraction" class="form-control" placeholder="">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>d. Assignment and feedback given</strong>
-                    <input type="text" name="assignmentAndFeedback" class="form-control" placeholder="">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>e. Supervision of project work</strong>
-                    <input type="text" name="supervisionOfProjectWork" class="form-control" placeholder="">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>f. Mentoring and being a role model</strong>
-                    <input type="text" name="monitoringRoleModel" class="form-control" placeholder="">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>20. How much did you expect your gross monthly salary(In Rupees) to be after your university education?</strong>
-                    <select required name="monthlySalary" class="custom-select" id="inputGroupSelect19" >
-                        <option></option>
-                        <option value="Less than 10,000">Less than 10,000</option>
-                        <option value="10,000-14,999">10,000-14,999</option>
-                        <option value="15,000-19,999">15,000-19,999</option>
-                        <option value="20,000-24,999">20,000-24,999</option>
-                        <option value="25,000-29,999">25,000-29,999</option>
-                        <option value="30,000-34,999">30,000-34,999</option>
-                        <option value="35,000-39,999">35,000-39,999</option>
-                        <option value="40,000-44,999">40,000-44,999</option>
-                        <option value="45,000-49,999">45,000-49,999</option>
-                        <option value="50,000-59,999">50,000-59,999</option>
-                        <option value="60,000-75,000">60,000-75,000</option>
-                        <option value="over 75,000">over 75,000</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>21. Which of the following describes your situation after your university education?(Mark with an “ √ ” to all that applies)</strong><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have a temporary job">I have a temporary job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I am employed now">I am employed now</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have not looked for a job">I have not looked for a job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have looked for a job, but have not found one yet">I have looked for a job, but have not found one yet</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I have a better job now">I have a better job now</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I received a promotion">I received a promotion</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm continuing with the same job that I had during the university years">I'm continuing with the same job that I had during the university years</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm continuing with further studies">I'm continuing with further studies</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm self-employed">I'm self-employed</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="situationAfterUniversityEduction[]" value="I'm employed now but am looking for a better job">I'm employed now but am looking for a better job</label><br>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>22. When was your last university exam?</strong>
-                    <div class='input-group date' id='lastExamDatePicker'>
-                        <input placeholder="MM/YYYY" required name="lastExamDate" type='text' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <script type="text/javascript">
-                $(function () {
-                    $('#lastExamDatePicker').datepicker({
-                        format: "mm/yyyy",
-                        viewMode: "months",
-                        minViewMode: "months",
-                        weekStart: 0,
-                        calendarWeeks: true,
-                        autoclose: true,
-                        todayHighlight: true,
-                        orientation: "auto",
-
-                    });
-                });
-            </script>
-            <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>23. Which sector(s) are you willing to be employed in? (Mark to all that applies)</strong><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Private Sector">Private Sector</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Public Sector, teaching">Public Sector, teaching</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Public Sector, other">Public Sector, other</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Self-Employed">Self-Employed</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Semi Government Sector">Semi Government Sector</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="University Staff">University Staff</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="sectorsWillingEmployee[]" value="Other">Other</label><br>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>24. Were you employed at any point after your last exam?</strong>
-                    <select required name="employedAfterLastExam" class="custom-select" id="inputGroupSelect20" >
-                        <option></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <strong>If Yes</strong>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>a. How long did you wait to get your first job after the last day of final exam? (Please enter the number of months)</strong>
-                    <input type="text" name="waitedDaysForFirstJob" class="form-control" placeholder="">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>b. What is the date of your first appointment?</strong>
-                    <div class='input-group date' id='firstAppointmentPicker'>
-                        <input placeholder="MM/DD/YYYY" name="firstAppointment" type='text' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <script type="text/javascript">
-                $(function () {
-                    $('#firstAppointmentPicker').datepicker({
-                        format: "mm/dd/yyyy",
-                        // viewMode: "dates",
-                        // minViewMode: "dates",
-                        weekStart: 0,
-                        calendarWeeks: true,
-                        autoclose: true,
-                        todayHighlight: true,
-                        orientation: "auto",
-
-                    });
-                });
-            </script>
-            <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>25. What is your current employment status?</strong>
-                    <select required name="currentEmploymentStatus" class="custom-select" id="inputGroupSelect21" >
-                        <option></option>
-                        <option value="Permanent Employment">Permanent Employment</option>
-                        <option value="Temporary/Contract Employment">Temporary/Contract Employment</option>
-                        <option value="Self employed">Self employed</option>
-                        <option value="Not looking for a job">Not looking for a job</option>
-                        <option value="Continuing highest studies">Continuing highest studies</option>
-                        <option value="Not employed">Not employed</option>
-                    </select>
-                </div>
-            </div>
-
-            <hr/>
-
-            <div class="pull-left">
-                <h5 style="font-weight: bold">Answer question 26-37 ONLY if you are currently Permanent/Temporary/Contract employed or Self employed otherwise skip to question 37</h5>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>26. Type of employment</strong>
-                    <select name="typeEmployemt" class="custom-select" id="inputGroupSelect22" >
-                        <option></option>
-                        <option value="Permanent Employment">Permanent Employment</option>
-                        <option value="Temporary/Contract Employment">Temporary/Contract Employment</option>
-                        <option value="Full-time">Full-time</option>
-                        <option value="Part-time">Part-time</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>27. Name of the organization currently employed:</strong>
-                    <input type="text" name="organizationCurrentlyEmployed" class="form-control" placeholder="">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>28. Which sector are you employed in?</strong>
-                    <select name="sectorEmployed" class="custom-select" id="inputGroupSelect23" >
-                        <option></option>
-                        <option value="Public Sector">Public Sector</option>
-                        <option value="Private Sector">Private Sector</option>
-                        <option value="Semi Government">Semi Government</option>
-                        <option value="Self Employed">Self Employed</option>
-                        <option value="Foreign">Foreign</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>29. The position you hold currently?</strong>
-                    <select name="currentPosition" class="custom-select" id="inputGroupSelect24" >
-                        <option></option>
-                        <option value="Senior Management">Senior Management</option>
-                        <option value="Senior Management">Senior Management</option>
-                        <option value="Senior Management">Senior Management</option>
-                        <option value="Management Trainee">Management Trainee</option>
-                        <option value="Support Staff (Clerical/Secretarial)">Support Staff (Clerical/Secretarial)</option>
-                        <option value="Teacher">Teacher</option>
-                        <option value="Lecturer">Lecturer</option>
-                        <option value="Doctor">Doctor</option>
-                        <option value="Entrepreneur">Entrepreneur</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>30. To which economic sector does your current job belong to?</strong>
-                    <select name="jobEconomicSector" class="custom-select" id="inputGroupSelect25" >
-                        <option></option>
-                        <option value="Agriculture/Dairy">Agriculture/Dairy</option>
-                        <option value="Bank Finance/Insurance">Bank Finance/Insurance</option>
-                        <option value="Construction/ Engineering">Construction/ Engineering</option>
-                        <option value="Education">Education</option>
-                        <option value="Manufacturing">Manufacturing</option>
-                        <option value="Health care">Health care</option>
-                        <option value="Hotels/Travels/Tourism">Hotels/Travels/Tourism</option>
-                        <option value="IT">IT</option>
-                        <option value="Power and Energy">Power and Energy</option>
-                        <option value="Telecommunication">Telecommunication</option>
-                        <option value="Trade">Trade</option>
-                        <option value="Plantation">Plantation</option>
-                        <option value="Public Administration & Defence">Public Administration & Defence</option>
-                        <option value="Professional, Scientific & technical">Professional, Scientific & technical</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>31. What is your current gross monthly salary (In Rupees)?</strong>
-                    <select name="currentGrossMonthlySalary" class="custom-select" id="inputGroupSelect26" >
-                        <option></option>
-                        <option value="Less than 20,000">Less than 20,000</option>
-                        <option value="20,000-29,999">20,000-29,999</option>
-                        <option value="30,000-39,999">30,000-39,999</option>
-                        <option value="40,000-49,999">40,000-49,999</option>
-                        <option value="50,000-59,999">50,000-59,999</option>
-                        <option value="60,000-75,000">60,000-75,000</option>
-                        <option value="over 75,000">over 75,000</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>32. How did you find this job?</strong>
-                    <select name="findTheJob" class="custom-select" id="inputGroupSelect27" >
-                        <option></option>
-                        <option value="Newspaper">Newspaper</option>
-                        <option value="Gazette">Gazette</option>
-                        <option value="Online">Online</option>
-                        <option value="Personal contact">Personal contact</option>
-                        <option value="Competitive Exam">Competitive Exam</option>
-                        <option value="Continuing with the same job held during university education">Continuing with the same job held during university education</option>
-                        <option value="Via Internship">Via Internship</option>
-                        <option value="Via University">Via University</option>
-                        <option value="Job fair/career guidance">Job fair/career guidance</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>33. What do you think were the most important aspects in getting this job? (Check all that applies)</strong><Br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Degree">Degree</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Class of degree">Class of degree</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Reputation of university">Reputation of university</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Field of study">Field of study</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Research experience">Research experience</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Personal contacts">Personal <contacts></contacts></label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Previous work experience">Previous work experience</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="English proficiency">English proficiency</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Other professional qualifications">Other professional qualifications</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Your personality">Your personality</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Computer Literacy">Computer Literacy</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="aspectsInGettingJob[]" value="Other">Other</label><br>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>34. Is this job related to the field you studies in your degree?</strong>
-                    <select name="jobRelatedDegree" class="custom-select" id="inputGroupSelect28" >
-                        <option></option>
-                        <option value="Very Related">Very Related</option>
-                        <option value="Somewhat related">Somewhat related</option>
-                        <option value="Neither related nor unrelated">Neither related nor unrelated</option>
-                        <option value="Somewhat unrelated">Somewhat unrelated</option>
-                        <option value="Very unrelated">Very unrelated</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>35. When did you find your current job?</strong>
-                    <select name="whenFIndCurrentJob" class="custom-select" id="inputGroupSelect28" >
-                        <option></option>
-                        <option value="During the University">During the University</option>
-                        <option value="After sitting the final exam">After sitting the final exam</option>
-                        <option value="After releasing the result">After releasing the result</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>36. How satisfied are you with your current job?</strong>
-                    <select name="satisfiedCurrentJob" class="custom-select" id="inputGroupSelect28" >
-                        <option></option>
-                        <option value="Very Satisfied">Very Satisfied</option>
-                        <option value="Somewhat Satisfied">Somewhat Satisfied</option>
-                        <option value="Neither Satisfied nor dissatisfied">Neither Satisfied nor dissatisfied</option>
-                        <option value="Somewhat dissatisfied">Somewhat dissatisfied</option>
-                        <option value="Very dissatisfied">Very dissatisfied</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>37. How long have you been waited to get this job since the effecive date of your degree?</strong>
-                    <select name="howLongWaitedToGetJob" class="custom-select" id="inputGroupSelect29" >
-                        <option></option>
-                        <option value="Less than 3 months">Less than 3 months</option>
-                        <option value="3-6 months">3-6 months</option>
-                        <option value="6-9 months">6-9 months</option>
-                        <option value="9-12 months">9-12 months</option>
-                        <option value="More than one year">More than one year</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>38. Are looking for employment right now?</strong>
-                    <select required name="lookingNowEmployee" class="custom-select" id="inputGroupSelect30" >
-                        <option></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>If no, please indicate the reason(s) and skip to 40)</strong>
-                    <input type="text" name="indicateReason" class="form-control" placeholder="Please indicate the reason(s)...">
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>39. What do you think are the main obstacles for you to get a job? Please give details</strong>
-                    <input type="text" name="obstaclesForJob" class="form-control" placeholder="">
-                </div>
-            </div>
-
-
-            <strong>40. Are you willing to do any of the following in order to find a job?</strong>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>a. Accept a job that is not in the field you stuied at the university</strong>
-                    <select required name="willingToFindJob" class="custom-select" id="inputGroupSelect30" >
-                        <option></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>b. Move if a job requires it</strong>
-                    <select required name="jobRequest" class="custom-select" id="inputGroupSelect31" >
-                        <option></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>c. Accept a job that you are over-qualified for</strong>
-                    <select required name="jobOverQualified" class="custom-select" id="inputGroupSelect32" >
-                        <option></option>
-                        <option value="Yes">Yes</option>
-                        <option value="No">No</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>41. What are the career goals for the next two years? (Mark with to all that applies)</strong><Br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Find a better job">Find a better job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Migration">Migration</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Further studies">Further studies</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Find a job">Find a job</label><br>
-                    <label><input style="margin-right: 50px" type="checkbox" name="careerGoalsNextTwoYears[]" value="Other">Other</label><br>
-                </div>
-            </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>42. How satisfied are you with your university education?</strong>
-                    <select required name="universityEducation" class="custom-select" id="inputGroupSelect33" >
-                        <option></option>
-                        <option value="Very Satisfied">Very Satisfied</option>
-                        <option value="Somewhat Satisfied">Somewhat Satisfied</option>
-                        <option value="Neither Satisfied nor dissatisfied">Neither Satisfied nor dissatisfied</option>
-                        <option value="Somewhat dissatisfied">Somewhat dissatisfied</option>
-                        <option value="Very dissatisfied">Very dissatisfied</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>43. What do you think could be done to facilitate the first employment after graduation?</strong>
-                    <input required type="text" name="employmentAfterGraduation" class="form-control" placeholder="">
-                </div>
-            </div>
+        </select>
+    </div>
+    <div class="col">
+        <label>Z-score / Aggregate:</label>
+        <input type="text" name="al_zscore" class="form-control" required>
+    </div>
+    <div class="col">
+        <label>Year:</label>
+        <input type="number" name="al_year" class="form-control" required>
+    </div>
+</div>
+
+<div class="mt-3">
+    <label>7. English Language Proficiency</label>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Exam</th>
+                <th>A</th><th>B</th><th>C</th><th>S</th><th>F/W</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GCE O/L English</td>
+                <td><input type="radio" name="ol_english" value="A" required></td>
+                <td><input type="radio" name="ol_english" value="B"></td>
+                <td><input type="radio" name="ol_english" value="C"></td>
+                <td><input type="radio" name="ol_english" value="S"></td>
+                <td><input type="radio" name="ol_english" value="F/W"></td>
+            </tr>
+            <tr>
+                <td>GCE A/L General English</td>
+                <td><input type="radio" name="al_english" value="A" required></td>
+                <td><input type="radio" name="al_english" value="B"></td>
+                <td><input type="radio" name="al_english" value="C"></td>
+                <td><input type="radio" name="al_english" value="S"></td>
+                <td><input type="radio" name="al_english" value="F/W"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+            {{--            =======================--}}
+{{-- SECTION B – ACADEMIC INFORMATION --}}
+<h4 class="mt-4">Section B - Academic Information</h4>
+
+<div class="form-row">
+    <div class="col">
+        <label for="faculty">8. Faculty:</label>
+        {{-- <input type="text" id="faculty" name="faculty" class="form-control" required> --}}
+        <select name="faculty" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="Management Studies">Management Studies</option>
+        <option value="Social Sciences & Languages">Social Sciences & Languages</option>
+        <option value="Applied Sciences">Applied Sciences</option>
+        <option value="Agricultural Sciences">Agricultural Sciences</option>
+        <option value="Geomatics">Geomatics</option>
+        <option value="Medicine">Medicine</option>
+        <option value="Technology">Technology</option>
+        <option value="Computing">Computing</option>
+    </select>
+    </div>
+    <div class="col">
+        <label for="department">9. Department:</label>
+        <input type="text" id="department" name="department" class="form-control" required>
+    </div>
+</div>
+
+<div class="form-group mt-3">
+    <label for="programme">10. Name of Degree Programme:</label>
+    <input type="text" id="programme" name="degree_programme" class="form-control" required>
+</div>
+
+<div class="form-group">
+    <label>11. Type of Degree Programme:</label>
+    <select name="degree_type" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="General">General</option>
+        <option value="Honours">Honours</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>12. Medium of Instruction:</label>
+    <select name="medium" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="English">English</option>
+        <option value="Sinhala">Sinhala</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>13. Class Obtained:</label>
+    <select name="class_obtained" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="First Class">First Class</option>
+        <option value="Second Upper">Second Upper</option>
+        <option value="Second Lower">Second Lower</option>
+        <option value="General Pass">General Pass</option>
+    </select>
+</div>
+
+<div class="mt-3">
+    <label>14. English proficiency at university level:</label>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Skill</th>
+                <th>Poor</th>
+                <th>Average</th>
+                <th>Moderate</th>
+                <th>Good</th>
+                <th>Excellent</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(['Speaking'=>'eng_speaking','Listening'=>'eng_listening','Writing'=>'eng_writing','Reading'=>'eng_reading'] as $label=>$field)
+            <tr>
+                <td>{{ $label }}</td>
+                @foreach(['Poor','Average','Moderate','Good','Excellent'] as $level)
+                <td><input type="radio" name="{{ $field }}" value="{{ $level }}" required></td>
+                @endforeach
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<div class="form-group">
+    <label>15. Rate your computer literacy level:</label>
+    <select name="computer_literacy_level" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="Poor">Poor</option>
+        <option value="Average">Average</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Good">Good</option>
+        <option value="Excellent">Excellent</option>
+    </select>
+</div>
+
+<div class="mt-3">
+    <label>16. Computer-related abilities:</label><br>
+    @foreach([
+        'Email Communication'=>'email_comm',
+        'Handling Databases'=>'databases',
+        'Spreadsheets & Word Docs'=>'office_docs',
+        'Website Design'=>'web_design',
+        'Write Computer Programs'=>'programming'
+    ] as $label=>$name)
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" name="abilities[]" value="{{ $label }}">
+        <label class="form-check-label">{{ $label }}</label>
+    </div>
+    @endforeach
+</div>
+
+<div class="mt-3">
+    <label>17. Internship Training component:</label>
+    <div class="form-group">
+        <label>17A. Was there an Internship?</label>
+        <select name="internship_yesno" class="form-control" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <label>Duration:</label>
+            <select name="internship_duration" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="0-3 months">0-3 months</option>
+                <option value="3-6 months">3-6 months</option>
+                <option value="6-9 months">6-9 months</option>
+                <option value="9-11 months">9-11 months</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Graded?</label>
+            <select name="internship_graded" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="Compulsory with GPA">Compulsory with GPA</option>
+                <option value="Compulsory without GPA">Compulsory without GPA</option>
+                <option value="Elective with GPA">Elective with GPA</option>
+                <option value="Elective without GPA">Elective without GPA</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Semester/Year:</label>
+            <input type="text" name="internship_semester" class="form-control" placeholder="e.g., 3rd Year, Sem I">
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <label>18. Other professional courses while studying:</label>
+    <div class="form-group">
+        <label>18A. Followed any other courses?</label>
+        <select name="other_courses_yesno" class="form-control" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <label>Type of course:</label>
+            <select name="other_course_type" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="NVQ">NVQ</option>
+                <option value="Certificate">Certificate</option>
+                <option value="Diploma">Diploma</option>
+                <option value="Higher Diploma+">Higher Diploma+</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Completed?</label>
+            <select name="other_course_completed" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Field:</label>
+            <select name="other_course_field" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="IT & Digital Skills">IT & Digital Skills</option>
+                <option value="Business & Management">Business & Management</option>
+                <option value="Language & Communication">Language & Communication</option>
+                <option value="Engineering & Technology">Engineering & Technology</option>
+                <option value="Health & Medicine">Health & Medicine</option>
+                <option value="Education & Teaching">Education & Teaching</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        
+    </div>
+    <div class="form-group mt-2">
+            <label>Were you involved in any extracurricular activities?</label>
+            <select name="extra_activities_yesno" class="form-control">
+                <option value="" disabled selected>Select</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+    <div class="form-group mt-2">
+        <label>18E. Extracurricular activities:</label><br>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="extra_activities[]" value="Sports">
+            <label class="form-check-label">Sports</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="extra_activities[]" value="Art & Performances">
+            <label class="form-check-label">Art & Performances</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="extra_activities[]" value="Clubs & Societies">
+            <label class="form-check-label">Clubs & Societies</label>
+        </div>
+        <input type="text" name="extra_activities_other" class="form-control mt-2" placeholder="Other (please specify)">
+    </div>
+</div>
+
+<div class="form-group mt-4">
+    <label>19. Current employment status:</label>
+    <select name="employment_status" class="form-control" required>
+        <option value="" disabled selected>Select</option>
+        <option value="Employed">Employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Not in the Labor Force">Not in the Labor Force</option>
+    </select>
+</div>
+            {{--            =======================--}}
+{{-- SECTION C – EMPLOYMENT INFORMATION --}}
+<h4 class="mt-5">Section C - Employment Information</h4>
+
+<div class="form-group">
+  <label>20. Are you an Employee / Employer / Self-employment / Family worker?</label>
+  <select name="employment_type" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Employee">Employee</option>
+    <option value="Employer">Employer</option>
+    <option value="Self-employment">Self-employment</option>
+    <option value="Contributing Family Worker">Contributing Family Worker</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>21. Employment permanence:</label>
+  <select name="employment_permanence" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Permanent">Permanent</option>
+    <option value="Temporary">Temporary</option>
+    <option value="Casual">Casual</option>
+    <option value="No permanent employer">No permanent employer</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>22. Sector of employer:</label>
+  <select name="employer_sector" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Government">Government</option>
+    <option value="Semi Government">Semi Government</option>
+    <option value="Private">Private</option>
+    <option value="Self">Self</option>
+    <option value="Foreign">Foreign</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="employerName">23. Name of institution:</label>
+  <input type="text" id="employerName" name="employer_name" class="form-control">
+</div>
+
+<div class="form-group">
+  <label>24. Occupation category:</label>
+  <select name="occupation_category" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Managers">Managers</option>
+    <option value="Professionals">Professionals</option>
+    <option value="Technicians & Associate Professionals">Technicians & Associate Professionals</option>
+    <option value="Clerical Support Workers">Clerical Support Workers</option>
+    <option value="Service & Sales Workers">Service & Sales Workers</option>
+    <option value="Skilled Agricultural, Forestry & Fishery Workers">Skilled Agricultural, Forestry & Fishery Workers</option>
+    <option value="Craft & Trades Workers">Craft & Trades Workers</option>
+    <option value="Operators & Assemblers">Operators & Assemblers</option>
+    <option value="Elementary Occupations">Elementary Occupations</option>
+    <option value="Armed Forces">Armed Forces</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>25. Economic sector:</label>
+  <select name="job_economic_sector" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Agriculture, Forestry & Fishing">Agriculture, Forestry & Fishing</option>
+    <option value="Mining & Quarrying">Mining & Quarrying</option>
+    <option value="Manufacturing">Manufacturing</option>
+    <option value="Electricity, Gas & Air Conditioning">Electricity, Gas & Air Conditioning</option>
+    <option value="Water Supply & Waste Management">Water Supply & Waste Management</option>
+    <option value="Construction">Construction</option>
+    <option value="Wholesale & Retail Trade">Wholesale & Retail Trade</option>
+    <option value="Transportation & Storage">Transportation & Storage</option>
+    <option value="Accommodation & Food Services">Accommodation & Food Services</option>
+    <option value="Information & Communication">Information & Communication</option>
+    <option value="Financial & Insurance">Financial & Insurance</option>
+    <option value="Real Estate">Real Estate</option>
+    <option value="Professional, Scientific & Technical">Professional, Scientific & Technical</option>
+    <option value="Administrative & Support Services">Administrative & Support Services</option>
+    <option value="Public Administration & Defence">Public Administration & Defence</option>
+    <option value="Education">Education</option>
+    <option value="Health & Social Work">Health & Social Work</option>
+    <option value="Arts, Entertainment & Recreation">Arts, Entertainment & Recreation</option>
+    <option value="Other">Other</option>
+  </select>
+</div>
+
+<div class="form-row">
+  <div class="col">
+    <label>26. When did you find your current job?</label>
+    <select name="when_found_job" class="form-control">
+      <option value="" disabled selected>Select</option>
+      <option value="During University">During University</option>
+      <option value="After final exam">After final exam</option>
+      <option value="After result release">After result release</option>
+    </select>
+  </div>
+  <div class="col">
+    <label>27. Related to your field?</label>
+    <select name="job_field_match" class="form-control">
+      <option value="" disabled selected>Select</option>
+      <option value="Yes, fully">Yes, fully</option>
+      <option value="Partially">Partially</option>
+      <option value="No">No, my education level is higher than required</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group mt-3">
+  <label>28. Use of university-acquired skills:</label>
+  <select name="use_skills" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Always">Always</option>
+    <option value="Frequently">Frequently</option>
+    <option value="Occasionally">Occasionally</option>
+    <option value="Rarely">Rarely</option>
+    <option value="Never">Never</option>
+  </select>
+</div>
+
+<div class="form-row">
+  <div class="col">
+    <label>29. Took job outside field due to lack of opportunities?</label>
+    <select name="outside_field_due" class="form-control">
+      <option value="" disabled selected>Select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+  <div class="col">
+    <label>30. Salary vs expectations:</label>
+    <select name="salary_expectation" class="form-control">
+      <option value="" disabled selected>Select</option>
+      <option value="Exceeds">Exceeds expectations</option>
+      <option value="Matches">Matches expectations</option>
+      <option value="Below">Below expectations</option>
+      <option value="Significantly below">Significantly below expectations</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-row mt-3">
+  <div class="col">
+    <label>31. Gross monthly salary:</label>
+    <select name="gross_salary" class="form-control">
+      <option value="" disabled selected>Select</option>
+      <option value="below 50,000">below 50,000</option>
+      <option value="50,000-100,000">50,000-100,000</option>
+      <option value="101,000-150,000">101,000-150,000</option>
+      <option value="151,000-200,000">151,000-200,000</option>
+      <option value="above 200,000">above 200,000</option>
+    </select>
+  </div>
+  <div class="col">
+    <label>32. Career growth satisfaction:</label>
+    <select name="career_growth_sat" class="form-control">
+      <option value="" disabled selected>Select</option>
+      <option value="Very satisfied">Very satisfied</option>
+      <option value="Somewhat satisfied">Somewhat satisfied</option>
+      <option value="Neutral">Neutral</option>
+      <option value="Somewhat dissatisfied">Somewhat dissatisfied</option>
+      <option value="Very dissatisfied">Very dissatisfied</option>
+    </select>
+  </div>
+</div>
+
+<div class="form-group mt-3">
+  <label>33. Considering job change due to underemployment?</label>
+  <select name="consider_change" class="form-control">
+    <option value="" disabled selected>Select</option>
+    <option value="Yes, actively searching">Yes, actively searching</option>
+    <option value="Yes, but not actively">Yes, but not actively</option>
+    <option value="No">No</option>
+  </select>
+</div>
+
+            {{--            =======================--}}
+<p class="bg-warning text-dark p-3 mb-0 rounded">
+            If you are not having any employment, please provide information to section D.
+        </p>
+{{-- SECTION D – Unemployment Information --}}
+<h4 class="mt-5">Section D - Unemployment Information</h4>
+
+<div class="form-group">
+    <label>34. Reasons for unemployment (select all that apply):</label><br>
+    @foreach([
+        'Lack of Relevant Skills',
+        'Limited Job Opportunities',
+        'Lack of Work Experience',
+        'High Salary Expectations',
+        'Over qualification',
+        'Poor economic conditions',
+        'Weak Professional Networks',
+        'Mismatch Between Degree & Industry Needs',
+        'Other'
+    ] as $reason)
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="unemp_reasons[]" value="{{ $reason }}">
+        <label class="form-check-label">{{ $reason }}</label>
+    </div>
+    @endforeach
+    <input type="text" name="unemp_reasons_other" class="form-control mt-2" placeholder="Other (please specify)">
+</div>
+
+<div class="form-row">
+    <div class="col">
+        <label>35. Expected employment type:</label>
+        <select name="future_employment_type" class="form-control">
+            <option value="" disabled selected>Select</option>
+            <option value=">Self-employment">Self-employment</option>
+            <option value="Paid employment">Paid employment</option>
+            <option value="Any">Any</option>
+        </select>
+    </div>
+    <div class="col">
+        <label>36. Expected job sector:</label>
+        <select name="expected_sector" class="form-control">
+            <option value="" disabled selected>Select</option>
+            <option value="Public">Public sector</option>
+            <option value="Semi Government">Semi Government sector</option>
+            <option value="Private">Private sector</option>
+            <option value="Any">Any sector</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group mt-3">
+    <label>37. Did you take any steps in the last 4 weeks to find work or start self-employment?</label>
+    <select name="took_steps" class="form-control">
+        <option value="" disabled selected>Select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>38. Steps taken (select up to three):</label><br>
+    @foreach([
+        'Registered for government job',
+        'Registered in private/Internet',
+        'Replying to ads',
+        'Networking',
+        'Preparing for self-employment resources',
+        'Other'
+    ] as $step)
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="job_search_steps[]" value="{{ $step }}">
+        <label class="form-check-label">{{ $step }}</label>
+    </div>
+    @endforeach
+    <input type="text" name="job_search_steps_other" class="form-control mt-2" placeholder="Other (please specify)">
+</div>
+
+<div class="form-group">
+    <label>39. Minimum salary expected (reservation wage):</label>
+    <select name="reservation_wage" class="form-control">
+        <option value="" disabled selected>Select</option>
+        <option value="<= 50,000">&le; 50,000</option>
+        <option value="50,001-100,000">50,001-100,000</option>
+        <option value="100,001-150,000">100,001-150,000</option>
+        <option value="150,001-200,000">150,001-200,000</option>
+        <option value="> 200,000">> 200,000</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>40. Expected occupation:</label>
+    <select name="expected_occupation" class="form-control">
+        <option value="" disabled selected>Select</option>
+        @foreach([
+            'Managers',
+            'Professionals',
+            'Technicians & Associate Professionals',
+            'Clerical Support Workers',
+            'Service & Sales Workers',
+            'Skilled Agricultural, Forestry & Fishery Workers',
+            'Craft & Related Trades Workers',
+            'Plant & Machine Operators & Assemblers',
+            'Elementary Occupations',
+            'Armed Forces Occupations',
+            'Other'
+        ] as $occupation)
+        <option value="{{ $occupation }}">{{ $occupation }}</option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
+    <label>41. Expected economic sector:</label>
+    <select name="expected_job_economic_sector" class="form-control">
+        <option value="" disabled selected>Select</option>
+        @foreach([
+            'Agriculture, Forestry & Fishing',
+            'Mining & Quarrying',
+            'Manufacturing',
+            'Electricity, Gas & Air Conditioning',
+            'Water Supply & Waste Management',
+            'Construction',
+            'Wholesale & Retail Trade',
+            'Transportation & Storage',
+            'Accommodation & Food Services',
+            'Information & Communication',
+            'Financial & Insurance',
+            'Real Estate',
+            'Professional, Scientific & Technical',
+            'Administrative & Support Services',
+            'Public Administration & Defence',
+            'Education',
+            'Health & Social Work',
+            'Arts, Entertainment & Recreation',
+            'Other'
+        ] as $sector)
+        <option value="{{ $sector }}">{{ $sector }}</option>
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
+    <label>42. How long have you been looking for a job after graduation? (months)</label>
+    <input type="number" name="job_search_duration" class="form-control" placeholder="Number of months">
+</div>
 
             {{--            =======================--}}
 
+{{-- SECTION E – GENERAL COMMENTS --}}
+<h4 class="mt-5">Section E - General Comments</h4>
 
+<div class="form-group">
+  <label>43. What are your career goals for the next two years? (Select all that apply)</label><br>
+  @foreach([
+    'Find a better job',
+    'Migration',
+    'Further studies',
+    'Find a job',
+    'Other'
+  ] as $goal)
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" name="career_goals[]" value="{{ $goal }}">
+      <label class="form-check-label">{{ $goal }}</label>
+    </div>
+  @endforeach
+  <input type="text" name="career_goals_other" class="form-control mt-2" placeholder="Other (please specify)">
+</div>
 
+<div class="form-group">
+  <label>44. How satisfied are you with your university education?</label>
+  <select name="university_satisfaction" class="form-control" required>
+    <option value="" disabled selected>Select</option>
+    <option value="Very satisfied">Very satisfied</option>
+    <option value="Somewhat satisfied">Somewhat satisfied</option>
+    <option value="Neither satisfied nor dissatisfied">Neither satisfied nor dissatisfied</option>
+    <option value="Somewhat dissatisfied">Somewhat dissatisfied</option>
+    <option value="Very dissatisfied">Very dissatisfied</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>45. If you are dissatisfied, please provide reasons for your answer.</label>
+  <textarea name="dissatisfaction_reasons" class="form-control" rows="3" placeholder="Your reasons..."></textarea>
+</div>
+
+<div class="mt-3">
+  <label>46. Comment on the following statements:</label>
+  <div class="table-responsive mb-4">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Statement</th>
+          <th>Very satisfied</th>
+          <th>Somewhat satisfied</th>
+          <th>Neither</th>
+          <th>Somewhat dissatisfied</th>
+          <th>Very dissatisfied</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach([
+          'Teaching methods used at the university are effective'        => 'teaching_methods',
+          'Learning process is suitable for current job environment'      => 'learning_process',
+          'The quality of lecturers/instructors is good'                 => 'lecturer_quality',
+          'The lab facilities provided are satisfactory'                 => 'lab_facilities',
+          'The quality of classrooms is good'                            => 'classroom_quality',
+          'The library facilities are satisfactory'                      => 'library_facilities',
+          'IT facilities are satisfactory'                               => 'it_facilities',
+          'Workload assigned is fine'                                    => 'workload'
+        ] as $text => $field)
+          <tr>
+            <td>{{ $text }}</td>
+            @foreach(['Very satisfied','Somewhat satisfied','Neither','Somewhat dissatisfied','Very dissatisfied'] as $level)
+              <td><input type="radio" name="{{ $field }}" value="{{ $level }}" required></td>
+            @endforeach
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>47. When was your last university exam?</label>
+  <input type="text" id="lastExamPicker" name="last_university_exam" class="form-control" placeholder="MM/YYYY" required>
+</div>
+
+<div class="form-group">
+  <label>48. What do you think could be done to facilitate the first employment after graduation?</label>
+  <textarea name="facilitate_employment" class="form-control" rows="3" placeholder="Your suggestions..." required></textarea>
+</div>
+
+<div class="form-group">
+  <label>49. Any other comments.</label>
+  <textarea name="other_comments" class="form-control" rows="3" placeholder="Other comments..." required></textarea>
+</div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -12,7 +12,7 @@
         {{--    @method('PUT')--}}
 
         <div style="margin: 60px" class="row">
-
+            
             <div class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="form-group">
@@ -31,14 +31,21 @@
 
                     //            session_destroy();
                     ?>
+                    
+                    @if(checkPermission(['Admin', 'EBSC_Applied', 'EBSC_Geo', 'EBSC_Social', 'EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing','EBSC_CIKCS']))
 
-                    <strong>Registration Number:</strong>
-{{--                    <input required type="text" name="email" class="form-control" placeholder="Email">--}}
-                    <input id="regNum" type="text" class="form-control @error('regNum') is-invalid @enderror" name="regNum" value="{{ old('regNum') }}" required autocomplete="regNum" autofocus placeholder="Registration Number">
-{{--                    <input id="regNum" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Registration Number">--}}
-                    @error('email')
-
-
+                    
+                        <div class="nav justify-content-center">
+                            <a class="btn btn-lg btn-primary mx-auto" href="{{ route('eligibleStudents.index') }}">Dashboard</a>
+                        </div>
+                        @else
+                        <strong>Registration Number:</strong>
+                        {{--                    <input required type="text" name="email" class="form-control" placeholder="Email">--}}
+                                            <input id="regNum" type="text" class="form-control @error('regNum') is-invalid @enderror" name="regNum" value="{{ old('regNum') }}" required autocomplete="regNum" autofocus placeholder="Registration Number">
+                        {{--                    <input id="regNum" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Registration Number">--}}
+                                            @error('email')
+                        
+                    
 
                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -50,6 +57,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button style="width: 10%" type="submit" class="btn btn-primary">Go</button>
             </div>
+            @endif
 
             <div class="" style="margin-top: 20px">
                 <div class="wecomebox" style="background: #800f0f">

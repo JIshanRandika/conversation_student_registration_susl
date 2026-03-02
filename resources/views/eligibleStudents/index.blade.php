@@ -22,7 +22,7 @@
                 </div>
             </div>
         @endif
-        @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing']))
+        @if(checkPermission([ 'Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing','EBSC_CIKCS']))
 
                 <div class="pull-left">
                     <h2 >Eligible Students</h2>
@@ -314,6 +314,23 @@
                             </div>
                         </form>
                     @endif
+                    @if(checkPermission(['EBSC_CIKCS']))
+                        <form method="GET" action="{{route('exportbyfaculty')}}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-footer">
+                                <div class="row">
+                                    <input style="display: none" required value="Computing" type="text" name="faculty" class="form-control" >
+                                    <div class="form-group">
+                                        {{ Form::select('convocationName', ($convo), null, ['class' => 'form-control']) }}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12" style="display: inline-flex;justify-content: center">
+                                        <button type="submit" class="btn btn-success btn-user float-right mb-3">Export The Registered Students List in Indigenous Knowledge & Community Studies</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    @endif
                     @if(checkPermission(['EBSC_Sport']))
                         <form method="GET" action="{{route('exportbyfaculty')}}" enctype="multipart/form-data">
                             @csrf
@@ -362,7 +379,7 @@
 {{--            </script>--}}
 
 
- @if(checkPermission(['Admin','mainStoreClark','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+ @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','EBSC_Computing','EBSC_CIKCS']))
     <div class=" mt-4 w-100 pb-4">
         <div class="card shadow p-4" style="background-color: #E9DDDD;">
             <h4 class="text-center mb-4">Search Eligible Students</h4>
@@ -402,6 +419,7 @@
                             <option value="Technology">Technology</option>
                             <option value="Sport">Sport</option>
                             <option value="Graduate Studies">Graduate Studies</option>
+                            <option value="Indigenous Knowledge & Community Studies">Indigenous Knowledge & Community Studies</option>
                         </select>
                     </div>
 
@@ -434,13 +452,13 @@
                     <thead class="table-dark sticky-top">
                         <tr>
                             <th>No</th>
-                            @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+                            @if(checkPermission(['Admin','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing','EBSC_CIKCS']))
                             <th>Registration Status</th>
                             @endif
                             <th>Name</th>
                             <th>Register Number</th>
                             <th>Index Number</th>
-                            @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing']))
+                            @if(checkPermission(['Admin','viceChancellor','EBSC_Applied','EBSC_Geo','EBSC_Social','EBSC_Mana','EBSC_Med','EBSC_Agri','EBSC_Tech','EBSC_GS','surveyAccess','EBSC_Computing','EBSC_CIKCS']))
                             <th>Faculty</th>
                             <th>Department</th>
                             <th>Degree Name</th>
@@ -461,7 +479,7 @@
                             <td>{{ ++$a }}</td>
                             @include('component.allEligibleStudentsTableComponent')
                             @endif
-                            @foreach(['EBSC_Applied' => 'Applied Sciences', 'EBSC_Geo' => 'Geomatics', 'EBSC_Social' => 'Social Sciences & Languages', 'EBSC_Mana' => 'Management Studies', 'EBSC_Med' => 'Medicine', 'EBSC_Agri' => 'Agricultural Sciences', 'EBSC_Tech' => 'Technology', 'EBSC_GS' => 'Graduate Studies', 'EBSC_Computing' => 'Computing'] as $role => $faculty)
+                            @foreach(['EBSC_Applied' => 'Applied Sciences', 'EBSC_Geo' => 'Geomatics', 'EBSC_Social' => 'Social Sciences & Languages', 'EBSC_Mana' => 'Management Studies', 'EBSC_Med' => 'Medicine', 'EBSC_Agri' => 'Agricultural Sciences', 'EBSC_Tech' => 'Technology', 'EBSC_GS' => 'Graduate Studies', 'EBSC_Computing' => 'Computing','EBSC_CIKCS' => 'Indigenous Knowledge & Community Studies'] as $role => $faculty)
                             @if(checkPermission([$role]) && $allEligibleStudent->faculty == $faculty)
                             <td>{{ ++$a }}</td>
                             @include('component.allEligibleStudentsTableComponent')
