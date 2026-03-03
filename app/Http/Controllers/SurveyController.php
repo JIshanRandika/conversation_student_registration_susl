@@ -160,6 +160,8 @@ class SurveyController extends Controller
         $pro->regNum = $_SESSION["user_reg"];
         $pro->convocationName = $_SESSION["convocationName"];
 
+        // console.log($pro->regNum);
+
 
         try {
                 $pro->save();
@@ -249,6 +251,125 @@ SELECT student_registrations.regNum FROM student_registrations;
 SELECT * FROM eligible_students;
 '))->where('regNum', '=', $regNumber);
 
+    }
+
+    public static function checkGoogleFormSurvey($regNumber) {
+        // Check if user has submitted Google Form survey
+        $surveyResponse = SurveyResponse::where('regNum', $regNumber)
+                            ->where('google_form_completed', true)
+                            ->first();
+        return $surveyResponse ? true : false;
+    }
+
+    public function submitGoogleSurvey()
+    {
+        // Store the current user's registration number in session
+        if (auth()->check()) {
+            session(['pending_survey_user' => auth()->user()->regNum]);
+        }
+        
+        // Show the return page where user can confirm completion
+        return view('survey.return');
+    }
+
+    public function markSurveyCompleted(Request $request)
+    {
+        $request->validate([
+            'regNum' => 'required|string'
+        ]);
+
+        // Check if survey response already exists
+        $existingResponse = SurveyResponse::where('regNum', $request->regNum)->first();
+        
+        if ($existingResponse) {
+            // Update existing record
+            $existingResponse->update([
+                'google_form_completed' => true,
+                'google_form_completed_at' => now(),
+            ]);
+        } else {
+            // Create new record for Google Form completion
+            SurveyResponse::create([
+                'regNum' => $request->regNum,
+                'email' => auth()->user()->email ?? '',
+                'contactNumber' => '',
+                'gender' => 'Not Specified',
+                'age' => '0',
+                'al_stream' => 'Not Specified',
+                'al_district' => 'Not Specified',
+                'al_zscore' => '0',
+                'al_year' => '0',
+                'ol_english' => 'Not Specified',
+                'al_english' => 'Not Specified',
+                'faculty' => 'Not Specified',
+                'department' => 'Not Specified',
+                'degree_programme' => 'Not Specified',
+                'degree_type' => 'Not Specified',
+                'medium' => 'English',
+                'class_obtained' => 'Not Specified',
+                'eng_speaking' => 'Not Specified',
+                'eng_listening' => 'Not Specified',
+                'eng_writing' => 'Not Specified',
+                'eng_reading' => 'Not Specified',
+                'computer_literacy_level' => 'Not Specified',
+                'abilities' => json_encode([]),
+                'internship_yesno' => 'No',
+                'other_courses_yesno' => 'No',
+                'employment_status' => 'Not Specified',
+                'career_goals' => json_encode([]),
+                'university_satisfaction' => 'Not Specified',
+                'teaching_methods' => 'Not Specified',
+                'learning_process' => 'Not Specified',
+                'lecturer_quality' => 'Not Specified',
+                'lab_facilities' => 'Not Specified',
+                'classroom_quality' => 'Not Specified',
+                'library_facilities' => 'Not Specified',
+                'it_facilities' => 'Not Specified',
+                'workload' => 'Not Specified',
+                'last_university_exam' => 'Not Specified',
+                'facilitate_employment' => 'Google Form Survey Completed',
+                'other_comments' => 'Survey completed via Google Form',
+                'convocationName' => session('convocationName') ?? 'Not Specified',
+                'google_form_completed' => true,
+                'google_form_completed_at' => now(),
+            ]);
+        }
+
+        return redirect()->route('eligibleStd')
+            ->with('success', 'Survey submitted successfully!');
+    }
+
+    public function checkSurveyStatus(Request $request)
+    {
+        $regNum = $request->input('regNum');
+        $hasSurvey = self::checkGoogleFormSurvey($regNum);
+        
+        return response()->json([
+            'status' => $hasSurvey ? 'completed' : 'pending',
+            'message' => $hasSurvey ? 'Survey completed successfully!' : 'Survey not completed yet.'
+        ]);
+    }
+
+    public function resetSurveyCompletion(Request $request)
+    {
+        $request->validate([
+            'regNum' => 'required|string'
+        ]);
+
+        $surveyResponse = SurveyResponse::where('regNum', $request->regNum)->first();
+        
+        if ($surveyResponse) {
+            $surveyResponse->update([
+                'google_form_completed' => false,
+                'google_form_completed_at' => null,
+            ]);
+            
+            return redirect()->back()
+                ->with('success', 'Survey completion status reset successfully.');
+        }
+        
+        return redirect()->back()
+            ->with('error', 'No survey record found for this registration number.');
     }
 
     public function exportSurvey(Request $request)

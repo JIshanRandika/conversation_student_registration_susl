@@ -321,7 +321,7 @@
         'Write Computer Programs'=>'programming'
     ] as $label=>$name)
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" name="abilities[]" value="{{ $label }}">
+        <input class="form-check-input" type="checkbox" name="abilities[]" value="{{ $label }}" >
         <label class="form-check-label">{{ $label }}</label>
     </div>
     @endforeach
@@ -431,7 +431,7 @@
             <input class="form-check-input" type="checkbox" name="extra_activities[]" value="Clubs & Societies">
             <label class="form-check-label">Clubs & Societies</label>
         </div>
-        <input type="text" name="extra_activities_other" class="form-control mt-2" placeholder="Other (please specify)">
+        {{-- <input type="text" name="extra_activities_other" class="form-control mt-2" placeholder="Other (please specify)"> --}}
     </div>
 </div>
 

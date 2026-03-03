@@ -50,7 +50,7 @@
     @endif
 
 
-    <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('studentRegistration.store') }}" id="selectform" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
         @csrf
         @foreach ($eligibleStudents as $eligibleStudent)
 
@@ -69,7 +69,18 @@
                                     </div>
                                 @endif
                                 @if(($faculty->faculty==$eligibleStudent->faculty)&&($faculty->status=="Open"))
-                                    <div style="margin: 60px" class="row">
+                                <style>
+                                    .responsive-margin {
+                                        margin: 40px;
+                                    }
+
+                                    @media (min-width: 768px) {
+                                        .responsive-margin {
+                                            margin: 60px;
+                                        }
+                                    }
+                                    </style>    
+                                <div  class="row responsive-margin">
                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                             <div class="form-group">
                                                 <strong>Name with initials:</strong>
@@ -400,6 +411,17 @@
                                                 var reader = new FileReader();
                                         
                                                 if (file) {
+                                                    // Check file size (2MB = 2 * 1024 * 1024 bytes)
+                                                    var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                                                    
+                                                    if (file.size > maxSize) {
+                                                        alert('File size exceeds 2MB. Please select a smaller file.');
+                                                        document.querySelector('#image').value = ''; // Clear the file input
+                                                        previewImage.style.display = 'none';
+                                                        previewPDF.style.display = 'none';
+                                                        return; // Exit the function
+                                                    }
+                                                    
                                                     var fileType = file.type;
                                         
                                                     if (fileType.startsWith('image')) {
@@ -419,6 +441,8 @@
                                                         };
                                                         reader.readAsDataURL(file);
                                                     } else {
+                                                        alert('Please select only image or PDF files.');
+                                                        document.querySelector('#image').value = ''; // Clear the file input
                                                         previewImage.style.display = 'none';
                                                         previewPDF.style.display = 'none';
                                                     }
@@ -524,9 +548,9 @@
                                                 $key = $keys[0];
                                                 $faculty = $data[$key]['faculty'];
                                                 @endphp
-                                                @if($eligibleStudent->faculty=='Graduate Studies' || $eligibleStudent->faculty=='Indigenous Knowledge & Community Studies')
+                                                @if($eligibleStudent->faculty=='Graduate Studies' || $eligibleStudent->faculty=='Indigenous Knowledge & Community Studies' || $eligibleStudent->faculty=="Agricultural Sciences" || $eligibleStudent->faculty=="Management Studies" || $eligibleStudent->faculty=="Social Sciences & Languages" || $eligibleStudent->faculty=="Medicine")
                                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies" && $faculty!="Indigenous Knowledge & Community Studies")
+                                                @elseif($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $faculty!="Graduate Studies" && $faculty!="Indigenous Knowledge & Community Studies" && $faculty!="Agricultural Sciences" && $faculty!="Management Studies" && $faculty!="Social Sciences & Languages" && $faculty!="Medicine")
                                                         <button type="submit" class="btn btn-primary">Submit</button>
                                                 @else
                                                     <button type="submit" class="btn btn-primary">Next</button>
@@ -593,6 +617,29 @@
                 }
             }
         });
-        </script>
+
+        // Form validation function
+        function validateForm() {
+            var fileInput = document.querySelector('#image');
+            var file = fileInput.files[0];
+            
+            if (file) {
+                var maxSize = 2 * 1024 * 1024; // 2MB in bytes
+                
+                if (file.size > maxSize) {
+                    alert('File size exceeds 2MB. Please select a smaller file before submitting.');
+                    return false; // Prevent form submission
+                }
+                
+                var allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'application/pdf'];
+                if (!allowedTypes.includes(file.type)) {
+                    alert('Please select only image (JPEG, PNG, GIF) or PDF files.');
+                    return false; // Prevent form submission
+                }
+            }
+            
+            return true; // Allow form submission
+        }
+    </script>
         
 @endsection

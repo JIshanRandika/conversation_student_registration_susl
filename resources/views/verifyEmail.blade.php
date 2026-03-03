@@ -55,7 +55,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button style="width: 10%" type="submit" class="btn btn-primary">Go</button>
+                <button style="width: 200px" type="submit" class="btn btn-primary">Go</button>
             </div>
             @endif
 

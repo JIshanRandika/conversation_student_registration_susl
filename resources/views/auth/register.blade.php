@@ -4,6 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 m-5">
+            {{-- Maintenance completion notice --}}
+            {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <h5 class="alert-heading">Registration is Now Open!</h5>
+                <p>We're pleased to inform you that our system maintenance is complete. You can now register for the convocation without any interruptions.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> --}}
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>

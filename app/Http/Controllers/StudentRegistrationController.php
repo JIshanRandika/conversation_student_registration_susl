@@ -163,7 +163,7 @@ class StudentRegistrationController extends Controller
 
         Mail:: to($request->email)->send(new RegistrationSend($status));
 
-        if($request->faculty=="Graduate Studies" || $request->faculty=="Indigenous Knowledge & Community Studies"){
+        if($request->faculty=="Graduate Studies" || $request->faculty=="Indigenous Knowledge & Community Studies" || $request->faculty=="Agricultural Sciences" || $request->faculty=="Management Studies" || $request->faculty=="Social Sciences & Languages" || $request->faculty=="Medicine" || $request->faculty=="Applied Sciences" || $request->faculty=="Geomatics" || $request->faculty=="Technology" || $request->faculty=="Computing"){
             try {
                 $pro->save();
             }catch (QueryException $e){
@@ -172,7 +172,7 @@ class StudentRegistrationController extends Controller
             }
             return redirect()->route('eligibleStd')
                 ->with('success','Registration successfully Completed.');
-        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies" && $request->faculty!="Indigenous Knowledge & Community Studies"){
+        }elseif ($SurveyDocumentsCount>0 && $rGDocumentsCount==0 && $request->faculty!="Graduate Studies" && $request->faculty!="Indigenous Knowledge & Community Studies" && $request->faculty!="Agricultural Sciences" && $request->faculty!="Management Studies" && $request->faculty!="Social Sciences & Languages" && $request->faculty!="Medicine" && $request->faculty!="Applied Sciences" && $request->faculty!="Geomatics" && $request->faculty!="Technology" && $request->faculty!="Computing"){
             try {
                 $pro->save();
             }catch (QueryException $e){

@@ -62,12 +62,12 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <h2>Convocation Registration Successful</h2>
+            <h2>Account Created Successfully</h2>
         </div>
         <div class="content">
             <p>Dear Graduate,</p>
-            <p>Congratulations! You have successfully registered for the <strong>Sabaragamuwa University of Sri Lanka Convocation</strong>.</p>
-            <p>We will provide further details regarding the ceremony soon.</p>
+            <p>Congratulations! Your account has been successfully created for the <strong>Sabaragamuwa University of Sri Lanka Convocation</strong>.</p>
+            <p>Please proceed to complete your registration process.</p>
             <p>For any inquiries, please contact our convocation office.</p>
             <p>Best regards,</p>
             <p><strong>Convocation Committee</strong></p>

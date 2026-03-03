@@ -88,6 +88,8 @@ protected $fillable = [
         'other_comments',
 
         'convocationName',
+        'google_form_completed',
+        'google_form_completed_at',
 ];
 
 // public function setAbilitiesAttribute($value) {

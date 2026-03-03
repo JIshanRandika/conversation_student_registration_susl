@@ -124,6 +124,18 @@
                                     @include('component.reportTableComponent')
                                 @endif
                             @endif
+                            @if(checkPermission(['EBSC_Computing']))
+                                @if($report->faculty == 'Computing')
+                                    <td>{{ ++$a }}</td>
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
+                            @if(checkPermission(['EBSC_CIKCS']))
+                                @if($report->faculty == 'Indigenous Knowledge & Community Studies')
+                                    <td>{{ ++$a }}</td>
+                                    @include('component.reportTableComponent')
+                                @endif
+                            @endif
                     @endif
 
                 </tr>
@@ -198,6 +210,18 @@
                         @endif
                         @if(checkPermission(['EBSC_GS']))
                             @if($report->faculty == 'Graduate Studies')
+                                    <td>{{ ++$a }}</td>
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_Computing']))
+                            @if($report->faculty == 'Computing')
+                                    <td>{{ ++$a }}</td>
+                                @include('component.reportTableComponent')
+                            @endif
+                        @endif
+                        @if(checkPermission(['EBSC_CIKCS']))
+                            @if($report->faculty == 'Indigenous Knowledge & Community Studies')
                                     <td>{{ ++$a }}</td>
                                 @include('component.reportTableComponent')
                             @endif
